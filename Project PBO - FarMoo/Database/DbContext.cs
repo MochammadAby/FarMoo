@@ -1,60 +1,65 @@
-﻿using DotNetEnv;
-using Npgsql;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DotNetEnv;
+using Npgsql;
+using System;
+using System.Data;
+
 namespace Project_PBO___FarMoo.Database
 {
-    public class DbContext
+    public class DbContext : IDisposable
     {
-        private string _dbHost;
-        private string _dbPort;
-        private string _dbUser;
-        private string _dbPassword;
-        private string _dbName;
-        private string _sslMode;
-        private string _channelBinding;
-
-        public string connStr;
-        public NpgsqlConnection Connection;
+        public NpgsqlConnection Connection { get; }
 
         public DbContext()
         {
-            Env.Load();
 
-            _dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-            _dbPort = Environment.GetEnvironmentVariable("DB_PORT");
-            _dbUser = Environment.GetEnvironmentVariable("DB_USER");
-            _dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
-            _dbName = Environment.GetEnvironmentVariable("DB_NAME");
-            _sslMode = Environment.GetEnvironmentVariable("SSL_MODE") ?? "Disable";
-            _channelBinding = Environment.GetEnvironmentVariable("CHANNEL_BINDING") ?? "Disable";
+            try
+            {
+                Env.Load();   
+            }
+            catch
+            {
+                
+            }
 
-            connStr =
-                $"Host={_dbHost};" +
-                $"Port={_dbPort};" +
-                $"Username={_dbUser};" +
-                $"Password={_dbPassword};" +
-                $"Database={_dbName};" +
-                $"SSL Mode={_sslMode};" +
-                $"ChannelBinding={_channelBinding};";
+            var connString = Environment.GetEnvironmentVariable("NEON_DB_URL");
 
-            Connection = new NpgsqlConnection(connStr);
+            if (string.IsNullOrEmpty(connString))
+            {
+                connString = Environment.GetEnvironmentVariable("DATABASE_URL");
+            }
+
+            if (string.IsNullOrEmpty(connString))
+            {
+                throw new InvalidOperationException(
+                    "Connection string Neon tidak ditemukan. Set NEON_DB_URL atau DATABASE_URL di .env / environment.");
+            }
+
+            Connection = new NpgsqlConnection(connString);
         }
 
         public void Open()
         {
-            if (Connection.State != System.Data.ConnectionState.Open)
+            if (Connection.State != ConnectionState.Open)
                 Connection.Open();
         }
 
         public void Close()
         {
-            if (Connection.State != System.Data.ConnectionState.Closed)
+            if (Connection.State != ConnectionState.Closed)
                 Connection.Close();
+        }
+
+        public void Dispose()
+        {
+            Close();
+            Connection.Dispose();
         }
     }
 }
