@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_PBO___FarMoo.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace Project_PBO___FarMoo.Views
 {
     public partial class Login : Form
     {
+
+        private AuthController auth;
         public Login()
         {
             InitializeComponent();
+            auth = new AuthController();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -24,27 +28,19 @@ namespace Project_PBO___FarMoo.Views
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string user = tbUsername.Text;
-            string pass = tbPassword.Text;
+            string username = tbUsername.Text;
+            string password = tbPassword.Text;
 
-            // Contoh data login (bisa diganti dari database)
-            string userValid = "admin";
-            string passValid = "12345";
+            var user = auth.Login(username, password);
 
-            if (user == userValid && pass == passValid)
+            if (user != null)
             {
-                MessageBox.Show("Login Berhasil!", "Informasi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Contoh: buka form baru
-                // FormMenu menu = new FormMenu();
-                // menu.Show();
-                // this.Hide();
+                MessageBox.Show("Login Berhasil! Selamat datang, " + user.NamaLengkap);
+                this.Hide();
             }
             else
             {
-                MessageBox.Show("Username atau Password salah!", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username atau Password salah!");
             }
         }
 
