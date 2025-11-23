@@ -27,33 +27,35 @@ namespace Project_PBO___FarMoo.Views
             string user = tbUsername.Text;
             string pass = tbPassword.Text;
 
-            string koneksi = @"Data Source=.\SQLEXPRESS;Initial Catalog=db_login;Integrated Security=True";
-            SqlConnection con = new SqlConnection(koneksi);
+            // Contoh data login (bisa diganti dari database)
+            string userValid = "admin";
+            string passValid = "12345";
 
-            try
+            if (user == userValid && pass == passValid)
             {
-                con.Open();
-                string query = "SELECT * FROM users WHERE username=@user AND password=@pass";
-                SqlCommand cmd = new SqlCommand(query, con);
+                MessageBox.Show("Login Berhasil!", "Informasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                cmd.Parameters.AddWithValue("@user", user);
-                cmd.Parameters.AddWithValue("@pass", pass);
-
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                if (dr.Read())
-                {
-                    MessageBox.Show("Login Berhasil!");
-                }
-                else
-                {
-                    MessageBox.Show("Username atau password salah!");
-                }
+                // Contoh: buka form baru
+                // FormMenu menu = new FormMenu();
+                // menu.Show();
+                // this.Hide();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Username atau Password salah!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
