@@ -36,6 +36,8 @@ namespace Project_PBO___FarMoo.Views
             if (user != null)
             {
                 MessageBox.Show("Login Berhasil! Selamat datang, " + user.NamaLengkap);
+                Halaman_Beranda home = new Halaman_Beranda(user);
+                home.Show();
                 this.Hide();
             }
             else

@@ -24,9 +24,15 @@ namespace Project_PBO___FarMoo.Views
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (tbNama.Text == "" || tbUsername.Text == "" ||
-                tbPassword.Text == "" || tbEmail.Text == "" || tbNomor.Text == "")
+        tbPassword.Text == "" || tbEmail.Text == "" || tbNomor.Text == "")
             {
                 MessageBox.Show("Semua field wajib diisi!");
+                return;
+            }
+
+            if (auth.IsEmailExist(tbEmail.Text))
+            {
+                MessageBox.Show("Email sudah terpakai! Gunakan email lain.");
                 return;
             }
 
