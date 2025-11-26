@@ -34,7 +34,10 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Templet_Tengkulak;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            DoubleBuffered = true;
             Name = "Membuat_Permintaan_Susu_Tengkulak";
             Text = "Membuat_Permintaan_Susu_Tengkulak";
             ResumeLayout(false);
