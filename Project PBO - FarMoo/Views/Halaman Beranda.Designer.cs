@@ -33,8 +33,8 @@
             label1 = new Label();
             lblWelcome = new Label();
             btnAkun = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            btnPermintaan = new Button();
+            btnRiwayat = new Button();
             button3 = new Button();
             panel4.SuspendLayout();
             SuspendLayout();
@@ -84,6 +84,7 @@
             // 
             // btnAkun
             // 
+            btnAkun.Cursor = Cursors.Hand;
             btnAkun.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAkun.Location = new Point(12, 246);
             btnAkun.Name = "btnAkun";
@@ -94,27 +95,27 @@
             btnAkun.UseVisualStyleBackColor = true;
             btnAkun.Click += btnAkun_Click;
             // 
-            // button1
+            // btnPermintaan
             // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 318);
-            button1.Name = "button1";
-            button1.Size = new Size(310, 54);
-            button1.TabIndex = 4;
-            button1.Text = "  Akun";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
+            btnPermintaan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPermintaan.Location = new Point(12, 318);
+            btnPermintaan.Name = "btnPermintaan";
+            btnPermintaan.Size = new Size(310, 54);
+            btnPermintaan.TabIndex = 4;
+            btnPermintaan.Text = "Permintaan susu";
+            btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
+            btnPermintaan.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnRiwayat
             // 
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(12, 389);
-            button2.Name = "button2";
-            button2.Size = new Size(310, 54);
-            button2.TabIndex = 5;
-            button2.Text = "  Akun";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = true;
+            btnRiwayat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRiwayat.Location = new Point(12, 389);
+            btnRiwayat.Name = "btnRiwayat";
+            btnRiwayat.Size = new Size(310, 54);
+            btnRiwayat.TabIndex = 5;
+            btnRiwayat.Text = " Riwayat pemesanan";
+            btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
+            btnRiwayat.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -123,7 +124,7 @@
             button3.Name = "button3";
             button3.Size = new Size(310, 54);
             button3.TabIndex = 6;
-            button3.Text = "  Akun";
+            button3.Text = "Halaman Beranda";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = true;
             // 
@@ -135,8 +136,8 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
             Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnRiwayat);
+            Controls.Add(btnPermintaan);
             Controls.Add(btnAkun);
             Controls.Add(lblWelcome);
             Controls.Add(panel4);
@@ -156,8 +157,8 @@
         private Label lblPengeluaran;
         private Label lblWelcome;
         private Button btnAkun;
-        private Button button1;
-        private Button button2;
+        private Button btnPermintaan;
+        private Button btnRiwayat;
         private Button button3;
     }
 }
