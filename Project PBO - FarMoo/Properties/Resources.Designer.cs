@@ -163,6 +163,16 @@ namespace Project_PBO___FarMoo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Profil_Peternak {
+            get {
+                object obj = ResourceManager.GetObject("Profil Peternak", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Register__2_ {
             get {
                 object obj = ResourceManager.GetObject("Register (2)", resourceCulture);

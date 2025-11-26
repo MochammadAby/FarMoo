@@ -29,7 +29,7 @@ namespace Project_PBO___FarMoo.Views
         {
             lblWelcome.Text = $"Halo, {currentUser.NamaLengkap} 👋";
 
-            int totalPengeluaran = dashboard.GetTotalPengeluaran(currentUser.UserId);
+            int totalPengeluaran = dashboard.GetTotalPenghasilan(currentUser.UserId);
             lblPengeluaran.Text = $"Rp {totalPengeluaran:N0}";
         }
 

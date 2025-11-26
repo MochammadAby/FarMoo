@@ -1,4 +1,5 @@
 ﻿using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,9 +37,23 @@ namespace Project_PBO___FarMoo.Views
             if (user != null)
             {
                 MessageBox.Show("Login Berhasil! Selamat datang, " + user.NamaLengkap);
-                Halaman_Beranda home = new Halaman_Beranda(user);
-                home.Show();
-                this.Hide();
+
+                if (user.Role == "tengkulak")
+                {
+                    Halaman_Beranda home = new Halaman_Beranda(user);
+                    home.Show();
+                    this.Hide();
+                }
+                else if (user.Role == "peternak")
+                {
+                    V_HalBerandaAdmin homeP = new V_HalBerandaAdmin (user);
+                    homeP.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Role tidak dikenali!");
+                }
             }
             else
             {

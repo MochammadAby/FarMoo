@@ -33,6 +33,11 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
+            lblWelcome_M = new Label();
+            panel4 = new Panel();
+            lblPenghasilan = new Label();
+            label1 = new Label();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -54,6 +59,7 @@
             button2.Text = "   Akun";
             button2.TextAlign = ContentAlignment.MiddleLeft;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += this.button2_Click;
             // 
             // button3
             // 
@@ -64,6 +70,7 @@
             button3.Text = "   Stok Susu";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -85,6 +92,49 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = true;
             // 
+            // lblWelcome_M
+            // 
+            lblWelcome_M.AutoSize = true;
+            lblWelcome_M.BackColor = Color.Transparent;
+            lblWelcome_M.Font = new Font("Arial", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome_M.Location = new Point(406, 175);
+            lblWelcome_M.Name = "lblWelcome_M";
+            lblWelcome_M.Size = new Size(110, 37);
+            lblWelcome_M.TabIndex = 5;
+            lblWelcome_M.Text = "label1";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Transparent;
+            panel4.BackgroundImage = Properties.Resources.Kotak_Beranda;
+            panel4.BackgroundImageLayout = ImageLayout.Stretch;
+            panel4.Controls.Add(lblPenghasilan);
+            panel4.Controls.Add(label1);
+            panel4.Location = new Point(1381, 113);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(300, 150);
+            panel4.TabIndex = 6;
+            // 
+            // lblPenghasilan
+            // 
+            lblPenghasilan.AutoSize = true;
+            lblPenghasilan.Font = new Font("Arial", 10F);
+            lblPenghasilan.Location = new Point(122, 89);
+            lblPenghasilan.Name = "lblPenghasilan";
+            lblPenghasilan.Size = new Size(62, 23);
+            lblPenghasilan.TabIndex = 1;
+            lblPenghasilan.Text = "label2";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Arial", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(63, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(178, 24);
+            label1.TabIndex = 0;
+            label1.Text = "Total Penghasilan";
+            // 
             // V_HalBerandaAdmin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -92,6 +142,8 @@
             BackgroundImage = Properties.Resources.Beranda_Peternak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(panel4);
+            Controls.Add(lblWelcome_M);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -101,7 +153,10 @@
             Name = "V_HalBerandaAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BerandaAdmin";
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -111,5 +166,9 @@
         private Button button3;
         private Button button4;
         private Button button5;
+        private Label lblWelcome_M;
+        private Panel panel4;
+        private Label lblPenghasilan;
+        private Label label1;
     }
 }
