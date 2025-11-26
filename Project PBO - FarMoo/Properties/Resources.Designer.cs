@@ -163,6 +163,16 @@ namespace Project_PBO___FarMoo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Templet_Permintaan_susu_tengkulak {
+            get {
+                object obj = ResourceManager.GetObject("Templet Permintaan susu tengkulak", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Templet_Tengkulak {
             get {
                 object obj = ResourceManager.GetObject("Templet Tengkulak", resourceCulture);
