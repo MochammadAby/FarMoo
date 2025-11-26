@@ -32,6 +32,7 @@
             lblPengeluaran = new Label();
             label1 = new Label();
             lblWelcome = new Label();
+            btnAkun = new Button();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -78,6 +79,18 @@
             lblWelcome.TabIndex = 2;
             lblWelcome.Text = "label1";
             // 
+            // btnAkun
+            // 
+            btnAkun.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAkun.Location = new Point(23, 246);
+            btnAkun.Name = "btnAkun";
+            btnAkun.Size = new Size(247, 54);
+            btnAkun.TabIndex = 3;
+            btnAkun.Text = "  Akun";
+            btnAkun.TextAlign = ContentAlignment.MiddleLeft;
+            btnAkun.UseVisualStyleBackColor = true;
+            btnAkun.Click += btnAkun_Click;
+            // 
             // Halaman_Beranda
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -85,6 +98,7 @@
             BackgroundImage = Properties.Resources.Beranda__8_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnAkun);
             Controls.Add(lblWelcome);
             Controls.Add(panel4);
             DoubleBuffered = true;
@@ -102,5 +116,6 @@
         private Label label1;
         private Label lblPengeluaran;
         private Label lblWelcome;
+        private Button btnAkun;
     }
 }

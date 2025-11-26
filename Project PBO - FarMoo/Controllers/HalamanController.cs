@@ -15,9 +15,9 @@ namespace Project_PBO___FarMoo.Controllers
             using var db = new DbContext();
             db.Open();
 
-            string query = @"SELECT COALESCE(SUM(total_harga), 0) 
-                             FROM transaksi 
-                             WHERE akun_id = @id";
+            string query = @"SELECT COALESCE(SUM(""Total_harga""), 0) 
+                            FROM transaksi
+                             WHERE user_id = @id";
 
             using var cmd = new NpgsqlCommand(query, db.Connection);
             cmd.Parameters.AddWithValue("@id", userId);
