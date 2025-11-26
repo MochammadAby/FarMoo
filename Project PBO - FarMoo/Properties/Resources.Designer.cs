@@ -93,9 +93,9 @@ namespace Project_PBO___FarMoo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Login__5_ {
+        internal static System.Drawing.Bitmap Login__6_ {
             get {
-                object obj = ResourceManager.GetObject("Login (5)", resourceCulture);
+                object obj = ResourceManager.GetObject("Login (6)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,39 @@ namespace Project_PBO___FarMoo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Login__6_ {
+        internal static System.Drawing.Bitmap Profil__2_ {
             get {
-                object obj = ResourceManager.GetObject("Login (6)", resourceCulture);
+                object obj = ResourceManager.GetObject("Profil (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profil__3_ {
+            get {
+                object obj = ResourceManager.GetObject("Profil (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profil__4_ {
+            get {
+                object obj = ResourceManager.GetObject("Profil (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Profil__5_ {
+            get {
+                object obj = ResourceManager.GetObject("Profil (5)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

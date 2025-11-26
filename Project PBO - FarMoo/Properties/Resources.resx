@@ -121,9 +121,6 @@
   <data name="Beranda (8)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Beranda (8).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Login (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Login (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Login (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,5 +132,17 @@
   </data>
   <data name="Kotak Beranda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kotak Beranda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profil (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profil (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profil (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profil (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

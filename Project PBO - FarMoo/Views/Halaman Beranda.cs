@@ -37,5 +37,12 @@ namespace Project_PBO___FarMoo.Views
         {
 
         }
+
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+            var profil = new V_Akun(currentUser);
+            profil.Show();
+            this.Hide();
+        }
     }
 }

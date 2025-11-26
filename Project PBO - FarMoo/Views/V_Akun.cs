@@ -1,0 +1,43 @@
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using Project_PBO___FarMoo.Models;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Project_PBO___FarMoo.Views
+{
+    public partial class V_Akun : Form
+    {
+        private Models.User currentUser;
+
+        public V_Akun()
+        {
+            InitializeComponent();
+        }
+        public V_Akun(Models.User user)
+        {
+            InitializeComponent();
+            currentUser = user;
+            LoadAkun();
+        }
+        private void LoadAkun()
+        {
+            tbNamaLengkap.Text = currentUser.NamaLengkap;
+            tbUsername.Text = currentUser.Username;
+            tbPassword.Text = currentUser.Password;
+            tbEmail.Text = currentUser.Email;
+            tbNoTelp.Text = currentUser.NomorHp;
+        }
+
+        private void btnubahprofil_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
