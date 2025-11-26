@@ -33,6 +33,9 @@
             label1 = new Label();
             lblWelcome = new Label();
             btnAkun = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -82,22 +85,58 @@
             // btnAkun
             // 
             btnAkun.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAkun.Location = new Point(23, 246);
+            btnAkun.Location = new Point(12, 246);
             btnAkun.Name = "btnAkun";
-            btnAkun.Size = new Size(247, 54);
+            btnAkun.Size = new Size(310, 54);
             btnAkun.TabIndex = 3;
             btnAkun.Text = "  Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = true;
             btnAkun.Click += btnAkun_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(12, 318);
+            button1.Name = "button1";
+            button1.Size = new Size(310, 54);
+            button1.TabIndex = 4;
+            button1.Text = "  Akun";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(12, 389);
+            button2.Name = "button2";
+            button2.Size = new Size(310, 54);
+            button2.TabIndex = 5;
+            button2.Text = "  Akun";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Location = new Point(12, 175);
+            button3.Name = "button3";
+            button3.Size = new Size(310, 54);
+            button3.TabIndex = 6;
+            button3.Text = "  Akun";
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Halaman_Beranda
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Beranda__8_;
+            BackgroundImage = Properties.Resources.Beranda_Terbaru;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(btnAkun);
             Controls.Add(lblWelcome);
             Controls.Add(panel4);
@@ -117,5 +156,8 @@
         private Label lblPengeluaran;
         private Label lblWelcome;
         private Button btnAkun;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

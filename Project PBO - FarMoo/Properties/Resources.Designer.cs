@@ -73,6 +73,16 @@ namespace Project_PBO___FarMoo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Beranda_Terbaru {
+            get {
+                object obj = ResourceManager.GetObject("Beranda Terbaru", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Kotak_Beranda {
             get {
                 object obj = ResourceManager.GetObject("Kotak Beranda", resourceCulture);
@@ -146,6 +156,16 @@ namespace Project_PBO___FarMoo.Properties {
         internal static System.Drawing.Bitmap Register__2_ {
             get {
                 object obj = ResourceManager.GetObject("Register (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Templet_Tengkulak {
+            get {
+                object obj = ResourceManager.GetObject("Templet Tengkulak", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
