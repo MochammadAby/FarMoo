@@ -151,7 +151,7 @@
   <data name="Templet Tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Templet Tengkulak1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Templet Permintaan susu tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Templet Permintaan susu tengkulak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Beranda Terbaru" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beranda Terbaru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
