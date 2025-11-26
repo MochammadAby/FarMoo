@@ -44,5 +44,9 @@ namespace Project_PBO___FarMoo.Views
             profil.Show();
             this.Hide();
         }
+        public void UpdateWelcome()
+        {
+            lblWelcome.Text = $"Halo, {currentUser.NamaLengkap} 👋";
+        }
     }
 }

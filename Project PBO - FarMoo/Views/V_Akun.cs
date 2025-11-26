@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Models;
 using System;
 using System.Collections.Generic;
@@ -37,7 +38,26 @@ namespace Project_PBO___FarMoo.Views
 
         private void btnubahprofil_Click(object sender, EventArgs e)
         {
+            currentUser.NamaLengkap = tbNamaLengkap.Text;
+            currentUser.Username = tbUsername.Text;
+            currentUser.Email = tbEmail.Text;
+            currentUser.NomorHp = tbNoTelp.Text;
+            currentUser.Password = tbPassword.Text;
 
+            var auth = new AuthController();
+
+            bool result = auth.UpdateProfile(currentUser);
+
+            if (result)
+            {
+                MessageBox.Show("Profil berhasil diperbarui!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Gagal memperbarui profil!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

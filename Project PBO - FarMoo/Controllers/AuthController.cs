@@ -89,5 +89,32 @@ namespace Project_PBO___FarMoo.Controllers
 
             return count > 0;
         }
+        public bool UpdateProfile(User user)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            string query = @"
+        UPDATE akun
+        SET 
+            nama_lengkap = @n,
+            username = @u,
+            email = @e,
+            nomor_hp = @hp,
+            password = @p
+        WHERE user_id = @id";
+
+            using var cmd = new NpgsqlCommand(query, db.Connection);
+
+            cmd.Parameters.AddWithValue("@n", user.NamaLengkap);
+            cmd.Parameters.AddWithValue("@u", user.Username);
+            cmd.Parameters.AddWithValue("@e", user.Email);
+            cmd.Parameters.AddWithValue("@hp", user.NomorHp);
+            cmd.Parameters.AddWithValue("@p", user.Password);
+            cmd.Parameters.AddWithValue("@id", user.UserId);
+
+            return cmd.ExecuteNonQuery() > 0;
+        }
+
     }
 }
