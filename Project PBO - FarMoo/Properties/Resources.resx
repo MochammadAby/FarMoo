@@ -127,8 +127,8 @@
   <data name="Kotak Beranda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Kotak Beranda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Profil (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Profil (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Templet Tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Templet Tengkulak1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Login (6)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login (6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,8 +139,8 @@
   <data name="Profil (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Profil (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Beranda (8)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Beranda (8).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Beranda Peternak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beranda Peternak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Beranda Terbaru" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Beranda Terbaru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,10 +148,7 @@
   <data name="Profil (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Profil (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Templet Tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Templet Tengkulak1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Beranda Terbaru" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Beranda Terbaru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Profil (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

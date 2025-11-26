@@ -28,57 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            BtnHalBeranda = new Button();
-            btnRiwayat = new Button();
-            btnPermintaan = new Button();
-            btnAkun = new Button();
             btnTambahBarang = new Button();
+            button5 = new Button();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             SuspendLayout();
-            // 
-            // BtnHalBeranda
-            // 
-            BtnHalBeranda.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnHalBeranda.Location = new Point(12, 174);
-            BtnHalBeranda.Name = "BtnHalBeranda";
-            BtnHalBeranda.Size = new Size(310, 54);
-            BtnHalBeranda.TabIndex = 14;
-            BtnHalBeranda.Text = "Halaman Beranda";
-            BtnHalBeranda.TextAlign = ContentAlignment.MiddleLeft;
-            BtnHalBeranda.UseVisualStyleBackColor = true;
-            // 
-            // btnRiwayat
-            // 
-            btnRiwayat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRiwayat.Location = new Point(12, 388);
-            btnRiwayat.Name = "btnRiwayat";
-            btnRiwayat.Size = new Size(310, 54);
-            btnRiwayat.TabIndex = 13;
-            btnRiwayat.Text = " Riwayat pemesanan";
-            btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
-            btnRiwayat.UseVisualStyleBackColor = true;
-            // 
-            // btnPermintaan
-            // 
-            btnPermintaan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnPermintaan.Location = new Point(12, 317);
-            btnPermintaan.Name = "btnPermintaan";
-            btnPermintaan.Size = new Size(310, 54);
-            btnPermintaan.TabIndex = 12;
-            btnPermintaan.Text = "Permintaan susu";
-            btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
-            btnPermintaan.UseVisualStyleBackColor = true;
-            // 
-            // btnAkun
-            // 
-            btnAkun.Cursor = Cursors.Hand;
-            btnAkun.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAkun.Location = new Point(12, 245);
-            btnAkun.Name = "btnAkun";
-            btnAkun.Size = new Size(310, 54);
-            btnAkun.TabIndex = 11;
-            btnAkun.Text = "  Akun";
-            btnAkun.TextAlign = ContentAlignment.MiddleLeft;
-            btnAkun.UseVisualStyleBackColor = true;
             // 
             // btnTambahBarang
             // 
@@ -89,6 +45,56 @@
             btnTambahBarang.Text = "Tambah";
             btnTambahBarang.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            button5.Location = new Point(23, 461);
+            button5.Name = "button5";
+            button5.Size = new Size(298, 55);
+            button5.TabIndex = 20;
+            button5.Text = "   Laporan Penjualan";
+            button5.TextAlign = ContentAlignment.MiddleLeft;
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(23, 390);
+            button4.Name = "button4";
+            button4.Size = new Size(298, 55);
+            button4.TabIndex = 19;
+            button4.Text = "   Permintaan Susu";
+            button4.TextAlign = ContentAlignment.MiddleLeft;
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(23, 319);
+            button3.Name = "button3";
+            button3.Size = new Size(298, 55);
+            button3.TabIndex = 18;
+            button3.Text = "   Stok Susu";
+            button3.TextAlign = ContentAlignment.MiddleLeft;
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(23, 248);
+            button2.Name = "button2";
+            button2.Size = new Size(298, 55);
+            button2.TabIndex = 17;
+            button2.Text = "   Akun";
+            button2.TextAlign = ContentAlignment.MiddleLeft;
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(23, 177);
+            button1.Name = "button1";
+            button1.Size = new Size(298, 55);
+            button1.TabIndex = 16;
+            button1.Text = "   Halaman Beranda";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = true;
+            // 
             // V_Membuat_Stok_Susu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -96,11 +102,12 @@
             BackgroundImage = Properties.Resources.Templet_Permintaan_susu_tengkulak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(btnTambahBarang);
-            Controls.Add(BtnHalBeranda);
-            Controls.Add(btnRiwayat);
-            Controls.Add(btnPermintaan);
-            Controls.Add(btnAkun);
             DoubleBuffered = true;
             Name = "V_Membuat_Stok_Susu";
             Text = "V_Membuat_Stok_Susu";
@@ -108,11 +115,11 @@
         }
 
         #endregion
-
-        private Button BtnHalBeranda;
-        private Button btnRiwayat;
-        private Button btnPermintaan;
-        private Button btnAkun;
         private Button btnTambahBarang;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private Button button1;
     }
 }
