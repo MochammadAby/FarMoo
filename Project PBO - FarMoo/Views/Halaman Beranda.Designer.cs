@@ -90,7 +90,7 @@
             btnAkun.Name = "btnAkun";
             btnAkun.Size = new Size(310, 54);
             btnAkun.TabIndex = 3;
-            btnAkun.Text = "  Akun";
+            btnAkun.Text = "   Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = true;
             btnAkun.Click += btnAkun_Click;
@@ -102,7 +102,7 @@
             btnPermintaan.Name = "btnPermintaan";
             btnPermintaan.Size = new Size(310, 54);
             btnPermintaan.TabIndex = 4;
-            btnPermintaan.Text = "Permintaan susu";
+            btnPermintaan.Text = "   Permintaan susu";
             btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaan.UseVisualStyleBackColor = true;
             // 
@@ -113,20 +113,21 @@
             btnRiwayat.Name = "btnRiwayat";
             btnRiwayat.Size = new Size(310, 54);
             btnRiwayat.TabIndex = 5;
-            btnRiwayat.Text = " Riwayat pemesanan";
+            btnRiwayat.Text = "   Riwayat pemesanan";
             btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
             btnRiwayat.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
+            button3.BackColor = Color.CornflowerBlue;
             button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(12, 175);
             button3.Name = "button3";
             button3.Size = new Size(310, 54);
             button3.TabIndex = 6;
-            button3.Text = "Halaman Beranda";
+            button3.Text = "   Halaman Beranda";
             button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             // 
             // Halaman_Beranda
             // 

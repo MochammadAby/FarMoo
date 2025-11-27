@@ -34,6 +34,10 @@
             tbEmail = new TextBox();
             tbNoTelp = new TextBox();
             btnubahprofil = new Button();
+            btnBeranda = new Button();
+            btnRiwayat = new Button();
+            btnPermintaan = new Button();
+            btnAkun = new Button();
             SuspendLayout();
             // 
             // tbNamaLengkap
@@ -89,6 +93,54 @@
             btnubahprofil.UseVisualStyleBackColor = false;
             btnubahprofil.Click += btnubahprofil_Click;
             // 
+            // btnBeranda
+            // 
+            btnBeranda.BackColor = Color.White;
+            btnBeranda.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBeranda.Location = new Point(12, 176);
+            btnBeranda.Name = "btnBeranda";
+            btnBeranda.Size = new Size(310, 54);
+            btnBeranda.TabIndex = 10;
+            btnBeranda.Text = "   Halaman Beranda";
+            btnBeranda.TextAlign = ContentAlignment.MiddleLeft;
+            btnBeranda.UseVisualStyleBackColor = false;
+            btnBeranda.Click += btnBeranda_Click;
+            // 
+            // btnRiwayat
+            // 
+            btnRiwayat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRiwayat.Location = new Point(12, 389);
+            btnRiwayat.Name = "btnRiwayat";
+            btnRiwayat.Size = new Size(310, 54);
+            btnRiwayat.TabIndex = 9;
+            btnRiwayat.Text = "   Riwayat pemesanan";
+            btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
+            btnRiwayat.UseVisualStyleBackColor = true;
+            // 
+            // btnPermintaan
+            // 
+            btnPermintaan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPermintaan.Location = new Point(12, 318);
+            btnPermintaan.Name = "btnPermintaan";
+            btnPermintaan.Size = new Size(310, 54);
+            btnPermintaan.TabIndex = 8;
+            btnPermintaan.Text = "   Permintaan susu";
+            btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
+            btnPermintaan.UseVisualStyleBackColor = true;
+            // 
+            // btnAkun
+            // 
+            btnAkun.BackColor = Color.CornflowerBlue;
+            btnAkun.Cursor = Cursors.Hand;
+            btnAkun.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAkun.Location = new Point(12, 246);
+            btnAkun.Name = "btnAkun";
+            btnAkun.Size = new Size(310, 54);
+            btnAkun.TabIndex = 7;
+            btnAkun.Text = "   Akun";
+            btnAkun.TextAlign = ContentAlignment.MiddleLeft;
+            btnAkun.UseVisualStyleBackColor = false;
+            // 
             // V_Akun
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -97,6 +149,10 @@
             BackgroundImage = Properties.Resources.Profil__5_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnBeranda);
+            Controls.Add(btnRiwayat);
+            Controls.Add(btnPermintaan);
+            Controls.Add(btnAkun);
             Controls.Add(btnubahprofil);
             Controls.Add(tbNoTelp);
             Controls.Add(tbEmail);
@@ -118,5 +174,9 @@
         private TextBox tbEmail;
         private TextBox tbNoTelp;
         private Button btnubahprofil;
+        private Button btnBeranda;
+        private Button btnRiwayat;
+        private Button btnPermintaan;
+        private Button btnAkun;
     }
 }

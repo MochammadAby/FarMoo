@@ -1,14 +1,16 @@
 ﻿using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Project_PBO___FarMoo.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Project_PBO___FarMoo.Views
 {
@@ -33,6 +35,12 @@ namespace Project_PBO___FarMoo.Views
             if (auth.IsEmailExist(tbEmail.Text))
             {
                 MessageBox.Show("Email sudah terpakai! Gunakan email lain.");
+                return;
+            }
+
+            if (auth.IsUsernameTaken(tbUsername.Text))
+            {
+                MessageBox.Show("Username sudah digunakan, Tolong isi Form Kembali!");
                 return;
             }
 
