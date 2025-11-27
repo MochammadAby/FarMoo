@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_PBO___FarMoo.Helper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,21 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppUser = Project_PBO___FarMoo.Models.User;
+
 
 namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 {
     public partial class V_MembuatProdukSusu : Form
     {
-        public V_MembuatProdukSusu()
+        private readonly AppUser _user;
+
+        public V_MembuatProdukSusu(AppUser user)
         {
+            _user = user;
             InitializeComponent();
             btnTambahProduk.Click += btnTambahProduk_Click;
+
         }
 
 
         private void btnTambahProduk_Click(object sender, EventArgs e)
         {
-            using (var form = new V_TambahProdukSusu())   // atau V_TambahStokSusu, terserah nama kamu
+            using (var form = new V_TambahProduk(_user))   // atau V_TambahStokSusu, terserah nama kamu
             {
                 // Buka sebagai dialog, biar setelah save balik lagi ke halaman stok
                 var result = form.ShowDialog();
@@ -29,9 +36,27 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                 if (result == DialogResult.OK)
                 {
                     // setelah user berhasil simpan stok, refresh tampilan kartu stok di sini
-                    MuatDataStok();   // isi sendiri: query stok_batch + produk_susu lalu generate card
+                    // MuatDataStok();   // isi sendiri: query stok_batch + produk_susu lalu generate card
                 }
             }
+        }
+
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_AkunAdmin(_user));
+
+        }
+
+        private void btnHalAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_HalBerandaAdmin(_user));
+
+        }
+
+        private void btnStokAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_MembuatProdukSusu(_user));
+
         }
     }
 }
