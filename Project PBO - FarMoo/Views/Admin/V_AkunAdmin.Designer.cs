@@ -73,13 +73,14 @@
             // 
             // btnAkunAdmin
             // 
+            btnAkunAdmin.BackColor = Color.CornflowerBlue;
             btnAkunAdmin.Location = new Point(22, 246);
             btnAkunAdmin.Name = "btnAkunAdmin";
             btnAkunAdmin.Size = new Size(298, 55);
             btnAkunAdmin.TabIndex = 6;
             btnAkunAdmin.Text = "   Akun";
             btnAkunAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnAkunAdmin.UseVisualStyleBackColor = true;
+            btnAkunAdmin.UseVisualStyleBackColor = false;
             // 
             // btnBerandaAdmin
             // 
@@ -90,6 +91,7 @@
             btnBerandaAdmin.Text = "   Halaman Beranda";
             btnBerandaAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnBerandaAdmin.UseVisualStyleBackColor = true;
+            btnBerandaAdmin.Click += btnBerandaAdmin_Click;
             // 
             // tbNamaLengkap
             // 

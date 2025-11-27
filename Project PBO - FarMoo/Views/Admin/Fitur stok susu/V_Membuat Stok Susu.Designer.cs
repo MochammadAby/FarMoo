@@ -99,7 +99,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Templet_Permintaan_susu_tengkulak;
+            BackgroundImage = Properties.Resources.Templet_Tengkulak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
             Controls.Add(button5);

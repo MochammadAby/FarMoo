@@ -53,5 +53,12 @@ namespace Project_PBO___FarMoo.Views.Admin
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnBerandaAdmin_Click(object sender, EventArgs e)
+        {
+            var profil = new V_HalBerandaAdmin(currentUser);
+            profil.Show();
+            this.Hide();
+        }
     }
 }
