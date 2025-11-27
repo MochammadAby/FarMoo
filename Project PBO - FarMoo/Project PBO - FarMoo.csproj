@@ -35,4 +35,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Admin\Fitur stok susu\" />
+  </ItemGroup>
+
 </Project>
