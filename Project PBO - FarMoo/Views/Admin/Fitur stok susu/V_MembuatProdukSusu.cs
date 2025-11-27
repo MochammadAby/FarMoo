@@ -21,17 +21,17 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 
         private void btnTambahProduk_Click(object sender, EventArgs e)
         {
-            using (var form = new V_TambahProdukSusu())   // atau V_TambahStokSusu, terserah nama kamu
-            {
-                // Buka sebagai dialog, biar setelah save balik lagi ke halaman stok
-                var result = form.ShowDialog();
+            //using (var form = new V_TambahProdukSusu())   // atau V_TambahStokSusu, terserah nama kamu
+            //{
+            //    // Buka sebagai dialog, biar setelah save balik lagi ke halaman stok
+            //    var result = form.ShowDialog();
 
-                if (result == DialogResult.OK)
-                {
-                    // setelah user berhasil simpan stok, refresh tampilan kartu stok di sini
-                    MuatDataStok();   // isi sendiri: query stok_batch + produk_susu lalu generate card
-                }
-            }
+            //    if (result == DialogResult.OK)
+            //    {
+            ////        // setelah user berhasil simpan stok, refresh tampilan kartu stok di sini
+            ////        MuatDataStok();   // isi sendiri: query stok_batch + produk_susu lalu generate card
+            //    }
+            //}
         }
     }
 }

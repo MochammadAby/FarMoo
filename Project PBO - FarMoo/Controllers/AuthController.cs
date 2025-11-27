@@ -75,6 +75,21 @@ namespace Project_PBO___FarMoo.Controllers
 
             return result > 0;
         }
+
+        public bool IsUsernameTaken (string username)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            string query = "SELECT COUNT(*) FROM akun WHERE username = @u";
+
+            using var cmd = new NpgsqlCommand(query, db.Connection);
+            cmd.Parameters.AddWithValue("@u", username);
+
+            int count = Convert.ToInt32(cmd.ExecuteScalar());
+            return count > 0;
+        }
+
         public bool IsEmailExist(string email)
         {
             using var db = new DbContext();

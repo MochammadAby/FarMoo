@@ -59,5 +59,12 @@ namespace Project_PBO___FarMoo.Views
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnBeranda_Click(object sender, EventArgs e)
+        {
+            var profil = new Halaman_Beranda(currentUser);
+            profil.Show();  
+            this.Hide();
+        }
     }
 }
