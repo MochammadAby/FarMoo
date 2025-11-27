@@ -15,5 +15,6 @@ namespace Project_PBO___FarMoo.Models
         public string Email { get; set; }
         public string NomorHp { get; set; }
         public string Role { get; set; }
+        public byte[] Foto { get; set; }
     }
 }

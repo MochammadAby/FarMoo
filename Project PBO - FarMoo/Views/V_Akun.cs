@@ -1,5 +1,8 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using Npgsql;
 using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Database;
+using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
 using System;
 using System.Collections.Generic;
@@ -34,37 +37,76 @@ namespace Project_PBO___FarMoo.Views
             tbPassword.Text = currentUser.Password;
             tbEmail.Text = currentUser.Email;
             tbNoTelp.Text = currentUser.NomorHp;
+            if (currentUser.Foto != null)
+            {
+                pbFotoProfil.Image = ImageHelper.BinaryToImage(currentUser.Foto);
+            }
+            else
+            {
+                pbFotoProfil.Image = null; // atau beri gambar default
+            }
         }
 
         private void btnubahprofil_Click(object sender, EventArgs e)
         {
-            currentUser.NamaLengkap = tbNamaLengkap.Text;
-            currentUser.Username = tbUsername.Text;
-            currentUser.Email = tbEmail.Text;
-            currentUser.NomorHp = tbNoTelp.Text;
-            currentUser.Password = tbPassword.Text;
+            byte[] fotoBytes = null;
 
-            var auth = new AuthController();
-
-            bool result = auth.UpdateProfile(currentUser);
-
-            if (result)
+            if (pbFotoProfil.Image != null)
             {
-                MessageBox.Show("Profil berhasil diperbarui!", "Success",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fotoBytes = ImageHelper.ImageToBinary(pbFotoProfil.Image);
             }
+
+            using var db = new DbContext();
+            db.Open();
+
+            string query = @"UPDATE akun 
+                     SET nama_lengkap = @nama,
+                         username = @user,
+                         password = @pass,
+                         email = @mail,
+                         nomor_hp = @hp,
+                         foto = @foto
+                     WHERE user_id = @id";
+
+            using var cmd = new NpgsqlCommand(query, db.Connection);
+            cmd.Parameters.AddWithValue("@nama", tbNamaLengkap.Text);
+            cmd.Parameters.AddWithValue("@user", tbUsername.Text);
+            cmd.Parameters.AddWithValue("@pass", tbPassword.Text);
+            cmd.Parameters.AddWithValue("@mail", tbEmail.Text);
+            cmd.Parameters.AddWithValue("@hp", tbNoTelp.Text);
+            cmd.Parameters.AddWithValue("@id", currentUser.UserId);
+
+            if (fotoBytes == null)
+                cmd.Parameters.AddWithValue("@foto", DBNull.Value);
             else
-            {
-                MessageBox.Show("Gagal memperbarui profil!", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                cmd.Parameters.AddWithValue("@foto", fotoBytes);
+
+            cmd.ExecuteNonQuery();
+            db.Close();
+
+            MessageBox.Show("Profil berhasil diubah!");
         }
 
         private void btnBeranda_Click(object sender, EventArgs e)
         {
             var profil = new Halaman_Beranda(currentUser);
-            profil.Show();  
+            profil.Show();
             this.Hide();
+        }
+
+        private void pbFotoProfil_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                pbFotoProfil.Image = Image.FromFile(ofd.FileName);
+            }
         }
     }
 }

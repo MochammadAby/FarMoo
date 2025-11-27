@@ -42,7 +42,10 @@ namespace Project_PBO___FarMoo.Controllers
                     Password = reader["password"].ToString(),
                     Email = reader["email"].ToString(),
                     NomorHp = reader["nomor_hp"].ToString(),
-                    Role = reader["role"].ToString()
+                    Role = reader["role"].ToString(),
+                    Foto = reader["foto"] == DBNull.Value
+                    ? null
+                     : (byte[])reader["foto"]
                 };
 
                 _db.Close();

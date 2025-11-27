@@ -38,6 +38,9 @@
             btnRiwayat = new Button();
             btnPermintaan = new Button();
             btnAkun = new Button();
+            pbFotoProfil = new PictureBox();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbFotoProfil).BeginInit();
             SuspendLayout();
             // 
             // tbNamaLengkap
@@ -141,6 +144,25 @@
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = false;
             // 
+            // pbFotoProfil
+            // 
+            pbFotoProfil.Location = new Point(489, 293);
+            pbFotoProfil.Name = "pbFotoProfil";
+            pbFotoProfil.Size = new Size(349, 336);
+            pbFotoProfil.TabIndex = 11;
+            pbFotoProfil.TabStop = false;
+            pbFotoProfil.Click += pbFotoProfil_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(599, 668);
+            button1.Name = "button1";
+            button1.Size = new Size(112, 34);
+            button1.TabIndex = 12;
+            button1.Text = "Ubah Foto";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // V_Akun
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -149,6 +171,8 @@
             BackgroundImage = Properties.Resources.Profil__5_;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(button1);
+            Controls.Add(pbFotoProfil);
             Controls.Add(btnBeranda);
             Controls.Add(btnRiwayat);
             Controls.Add(btnPermintaan);
@@ -162,6 +186,7 @@
             DoubleBuffered = true;
             Name = "V_Akun";
             Text = "V_Akun";
+            ((System.ComponentModel.ISupportInitialize)pbFotoProfil).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,5 +203,7 @@
         private Button btnRiwayat;
         private Button btnPermintaan;
         private Button btnAkun;
+        private PictureBox pbFotoProfil;
+        private Button button1;
     }
 }
