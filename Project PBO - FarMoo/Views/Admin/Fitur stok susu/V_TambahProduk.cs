@@ -21,16 +21,16 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 
         public V_TambahProduk(AppUser user)
         {
+            _user = user ?? throw new ArgumentNullException(nameof(user));
+
             InitializeComponent();
 
-            // Jadikan picturebox sebagai tombol upload gambar
             picPreview.Cursor = Cursors.Hand;
             picPreview.Click += picPreview_Click;
 
             btnSimpan.Click += btnSimpan_Click;
             btnBatal.Click += btnBatal_Click;
         }
-
         private void V_TambahProduk_Load(object sender, EventArgs e)
         {
             btnSimpan.Text = "Simpan";

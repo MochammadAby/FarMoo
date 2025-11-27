@@ -37,10 +37,10 @@ namespace Project_PBO___FarMoo.Controllers
             using var db = new DbContext();
             db.Open();
             const string sql = @"
-                SELECT produk_id, jenis_id, nama_produk, satuan_ml, harga, images
-                FROM produk_susu
-                WHERE lower(nama_produk) = lower(@nama) AND jenis_id = @jenis
-                LIMIT 1;";
+            SELECT produk_id, jenis_id, nama_produk, satuan_ml, harga, image AS images
+            FROM produk_susu
+            WHERE lower(nama_produk) = lower(@nama) AND jenis_id = @jenis
+            LIMIT 1;";
             using var cmd = new NpgsqlCommand(sql, db.Connection);
             cmd.Parameters.AddWithValue("@nama", namaProduk);
             cmd.Parameters.AddWithValue("@jenis", jenisId);
@@ -65,9 +65,9 @@ namespace Project_PBO___FarMoo.Controllers
             using var db = new DbContext();
             db.Open();
             const string sql = @"
-                INSERT INTO produk_susu (jenis_id, nama_produk, satuan_ml, harga, images)
-                VALUES (@jenis_id, @nama_produk, @satuan_ml, @harga, @images)
-                RETURNING produk_id;";
+            INSERT INTO produk_susu (jenis_id, nama_produk, satuan_ml, harga, image)
+            VALUES (@jenis_id, @nama_produk, @satuan_ml, @harga, @images)
+            RETURNING produk_id;";
             using var cmd = new NpgsqlCommand(sql, db.Connection);
             cmd.Parameters.AddWithValue("@jenis_id", p.JenisId);
             cmd.Parameters.AddWithValue("@nama_produk", p.NamaProduk);
@@ -77,6 +77,28 @@ namespace Project_PBO___FarMoo.Controllers
 
             var id = Convert.ToInt32(cmd.ExecuteScalar());
             return id;
+        }
+
+        public void UpdateProduk(M_ProdukSusu p)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"
+                UPDATE produk_susu
+                SET nama_produk = @nama_produk,
+                    harga       = @harga,
+                    images      = @images
+                WHERE produk_id = @produk_id;";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@produk_id", p.ProdukId);
+            cmd.Parameters.AddWithValue("@nama_produk", p.NamaProduk);
+            cmd.Parameters.AddWithValue("@harga", p.Harga);
+            cmd.Parameters.Add("@images", NpgsqlDbType.Bytea)
+                          .Value = (object?)p.Images ?? DBNull.Value;
+
+            cmd.ExecuteNonQuery();
         }
     }
 }

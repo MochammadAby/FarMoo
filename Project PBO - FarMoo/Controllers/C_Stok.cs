@@ -11,70 +11,98 @@ namespace Project_PBO___FarMoo.Controllers
 {
     internal class C_Stok
     {
-        public int InsertStokBatch(M_StokBatch s)
+        // INSERT stok_batch
+        public int InsertStokBatch(M_StokBatch stok)
         {
             using var db = new DbContext();
             db.Open();
-            using var tx = db.Connection.BeginTransaction();
+            using var transaksi = db.Connection.BeginTransaction();
             try
             {
                 const string sql = @"
                     INSERT INTO stok_batch (produk_id, tanggal_produksi, jumlah_botol, tanggal_expired)
                     VALUES (@produk_id, @tanggal_produksi, @jumlah_botol, @tanggal_expired)
                     RETURNING stok_id;";
-                using var cmd = new NpgsqlCommand(sql, db.Connection, tx);
-                cmd.Parameters.AddWithValue("@produk_id", s.ProdukId);
-                cmd.Parameters.AddWithValue("@tanggal_produksi", s.TanggalProduksi);
-                cmd.Parameters.AddWithValue("@jumlah_botol", s.JumlahBotol);
-                cmd.Parameters.AddWithValue("@tanggal_expired", s.TanggalExpired);
 
-                int stokId = Convert.ToInt32(cmd.ExecuteScalar());
+                using var perintah = new NpgsqlCommand(sql, db.Connection, transaksi);
+                perintah.Parameters.AddWithValue("@produk_id", stok.ProdukId);
+                perintah.Parameters.AddWithValue("@tanggal_produksi", stok.TanggalProduksi);
+                perintah.Parameters.AddWithValue("@jumlah_botol", stok.JumlahBotol);
+                perintah.Parameters.AddWithValue("@tanggal_expired", stok.TanggalExpired);
 
-                tx.Commit();
+                int stokId = Convert.ToInt32(perintah.ExecuteScalar());
+
+                transaksi.Commit();
                 return stokId;
             }
             catch
             {
-                tx.Rollback();
+                transaksi.Rollback();
                 throw;
             }
         }
 
-        public List<M_StokBatch> GetLatestStokBatches(int limit = 50)
+        // Ambil daftar stok batch terbaru (join dengan produk_susu) untuk ditampilkan di UI
+        public List<M_StokBatch> GetStokBatchTerbaru(int batas = 50)
         {
-            var res = new List<M_StokBatch>();
+            var daftarStok = new List<M_StokBatch>();
+
             using var db = new DbContext();
             db.Open();
+
             const string sql = @"
-                SELECT s.stok_id, s.produk_id, s.tanggal_produksi, s.jumlah_botol, s.tanggal_expired,
-                       p.nama_produk, p.satuan_ml, p.harga, p.images
+                SELECT s.stok_id,s.produk_id, s.tanggal_produksi, s.jumlah_botol, s.tanggal_expired, p.nama_produk, p.satuan_ml,p.harga, p.image AS images
                 FROM stok_batch s
                 JOIN produk_susu p ON p.produk_id = s.produk_id
                 ORDER BY s.stok_id DESC
-                LIMIT @limit;";
-            using var cmd = new NpgsqlCommand(sql, db.Connection);
-            cmd.Parameters.AddWithValue("@limit", limit);
-            using var r = cmd.ExecuteReader();
-            while (r.Read())
+                LIMIT @batas;";
+
+            using var perintah = new NpgsqlCommand(sql, db.Connection);
+            perintah.Parameters.AddWithValue("@batas", batas);
+
+            using var pembaca = perintah.ExecuteReader();
+            while (pembaca.Read())
             {
-                var sb = new M_StokBatch
+                var stok = new M_StokBatch
                 {
-                    StokId = r.GetInt32(r.GetOrdinal("stok_id")),
-                    ProdukId = r.GetInt32(r.GetOrdinal("produk_id")),
-                    TanggalProduksi = r.GetDateTime(r.GetOrdinal("tanggal_produksi")),
-                    JumlahBotol = r.GetInt32(r.GetOrdinal("jumlah_botol")),
-                    TanggalExpired = r.GetDateTime(r.GetOrdinal("tanggal_expired")),
-                    NamaProduk = r.GetString(r.GetOrdinal("nama_produk")),
-                    SatuanMl = r.GetInt32(r.GetOrdinal("satuan_ml")),
-                    Harga = r.GetInt32(r.GetOrdinal("harga")),
-                    Images = r.IsDBNull(r.GetOrdinal("images"))
-                        ? null
-                        : r.GetFieldValue<byte[]>(r.GetOrdinal("images"))
+                    StokId = pembaca.GetInt32(pembaca.GetOrdinal("stok_id")),
+                    ProdukId = pembaca.GetInt32(pembaca.GetOrdinal("produk_id")),
+                    TanggalProduksi = pembaca.GetDateTime(pembaca.GetOrdinal("tanggal_produksi")),
+                    JumlahBotol = pembaca.GetInt32(pembaca.GetOrdinal("jumlah_botol")),
+                    TanggalExpired = pembaca.GetDateTime(pembaca.GetOrdinal("tanggal_expired")),
+                    NamaProduk = pembaca.GetString(pembaca.GetOrdinal("nama_produk")),
+                    SatuanMl = pembaca.GetInt32(pembaca.GetOrdinal("satuan_ml")),   // hapus jika kolomnya ga ada
+                    Harga = pembaca.GetInt32(pembaca.GetOrdinal("harga")),
+                    Images = pembaca.IsDBNull(pembaca.GetOrdinal("images"))
+                                      ? null
+                                      : pembaca.GetFieldValue<byte[]>(pembaca.GetOrdinal("images"))
                 };
-                res.Add(sb);
+
+                daftarStok.Add(stok);
             }
-            return res;
+
+            return daftarStok;
+
+        }
+        public void UpdateStokBatch(M_StokBatch stok)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"
+            UPDATE stok_batch
+            SET tanggal_produksi = @tanggal_produksi,
+            jumlah_botol     = @jumlah_botol,
+            tanggal_expired  = @tanggal_expired
+            WHERE stok_id = @stok_id;";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@stok_id", stok.StokId);
+            cmd.Parameters.AddWithValue("@tanggal_produksi", stok.TanggalProduksi);
+            cmd.Parameters.AddWithValue("@jumlah_botol", stok.JumlahBotol);
+            cmd.Parameters.AddWithValue("@tanggal_expired", stok.TanggalExpired);
+
+            cmd.ExecuteNonQuery();
         }
     }
 }
-

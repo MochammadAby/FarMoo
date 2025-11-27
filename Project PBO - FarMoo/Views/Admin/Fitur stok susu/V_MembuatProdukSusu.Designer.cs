@@ -34,6 +34,7 @@
             btnAkun = new Button();
             btnHalAdmin = new Button();
             btnTambahProduk = new Button();
+            flpProduk = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // btnLaporanAdmin
@@ -99,6 +100,14 @@
             btnTambahProduk.UseVisualStyleBackColor = true;
             btnTambahProduk.Click += btnTambahProduk_Click;
             // 
+            // flpProduk
+            // 
+            flpProduk.AutoScroll = true;
+            flpProduk.Location = new Point(355, 159);
+            flpProduk.Name = "flpProduk";
+            flpProduk.Size = new Size(1531, 832);
+            flpProduk.TabIndex = 12;
+            // 
             // V_MembuatProdukSusu
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -106,6 +115,7 @@
             BackgroundImage = Properties.Resources.Templet_Permintaan_susu_tengkulak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(flpProduk);
             Controls.Add(btnTambahProduk);
             Controls.Add(btnHalAdmin);
             Controls.Add(btnLaporanAdmin);
@@ -126,5 +136,6 @@
         private Button btnAkun;
         private Button btnHalAdmin;
         private Button btnTambahProduk;
+        private FlowLayoutPanel flpProduk;
     }
 }
