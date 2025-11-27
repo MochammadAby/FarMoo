@@ -1,5 +1,7 @@
 ﻿using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,15 +11,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AppUser = Project_PBO___FarMoo.Models.User;
 
 namespace Project_PBO___FarMoo.Views.Admin
 {
     public partial class V_HalBerandaAdmin : Form
     {
+        private readonly AppUser _user;
         private User currentUser;
         private HalamanController dashboard;
-        public V_HalBerandaAdmin(User user)
+
+        public V_HalBerandaAdmin(AppUser user)
         {
+            _user = user;
             InitializeComponent();
             currentUser = user;
             dashboard = new HalamanController();
@@ -35,6 +41,7 @@ namespace Project_PBO___FarMoo.Views.Admin
 
         private void button3_Click(object sender, EventArgs e)
         {
+            NavigationHelper.NavigateTo(this, new V_MembuatProdukSusu(_user));
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -42,6 +49,12 @@ namespace Project_PBO___FarMoo.Views.Admin
             var profil = new V_AkunAdmin(currentUser);
             profil.Show();
             this.Hide();
+        }
+
+        private void btnHalamanAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_HalBerandaAdmin(_user));
+
         }
     }
 }

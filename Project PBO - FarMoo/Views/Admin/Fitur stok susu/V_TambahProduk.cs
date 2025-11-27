@@ -1,6 +1,8 @@
-﻿using Project_PBO___FarMoo.Controllers;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using AppUser = Project_PBO___FarMoo.Models.User;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -15,8 +17,9 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 
         private readonly C_Produk _produkController = new C_Produk();
         private readonly C_Stok _stokController = new C_Stok();
+        private readonly AppUser _user;
 
-        public V_TambahProduk()
+        public V_TambahProduk(AppUser user)
         {
             InitializeComponent();
 
@@ -195,6 +198,31 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
             public int SatuanMl { get; set; }
 
             public override string ToString() => $"{NamaJenis} - {SatuanMl} ml";
+        }
+
+        private void btnHalAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_HalBerandaAdmin(_user));
+        }
+
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_AkunAdmin(_user));
+        }
+
+        private void btnStokAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_MembuatProdukSusu(_user));
+        }
+
+        private void btnPermintaanAdmin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLaporanAdmin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

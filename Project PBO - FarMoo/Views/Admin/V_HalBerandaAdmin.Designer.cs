@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnHalamanAdmin = new Button();
+            btnAkunAdmin = new Button();
+            btnStokAdmin = new Button();
+            btnPermintaanAdmin = new Button();
+            btnLaporanPenjualan = new Button();
             lblWelcome_M = new Label();
             panel4 = new Panel();
             lblPenghasilan = new Label();
@@ -40,57 +40,58 @@
             panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // button1
+            // btnHalamanAdmin
             // 
-            button1.Location = new Point(22, 175);
-            button1.Name = "button1";
-            button1.Size = new Size(298, 55);
-            button1.TabIndex = 0;
-            button1.Text = "   Halaman Beranda";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = true;
+            btnHalamanAdmin.Location = new Point(22, 175);
+            btnHalamanAdmin.Name = "btnHalamanAdmin";
+            btnHalamanAdmin.Size = new Size(298, 55);
+            btnHalamanAdmin.TabIndex = 0;
+            btnHalamanAdmin.Text = "   Halaman Beranda";
+            btnHalamanAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnHalamanAdmin.UseVisualStyleBackColor = true;
+            btnHalamanAdmin.Click += btnHalamanAdmin_Click;
             // 
-            // button2
+            // btnAkunAdmin
             // 
-            button2.Location = new Point(22, 246);
-            button2.Name = "button2";
-            button2.Size = new Size(298, 55);
-            button2.TabIndex = 1;
-            button2.Text = "   Akun";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += this.button2_Click;
+            btnAkunAdmin.Location = new Point(22, 246);
+            btnAkunAdmin.Name = "btnAkunAdmin";
+            btnAkunAdmin.Size = new Size(298, 55);
+            btnAkunAdmin.TabIndex = 1;
+            btnAkunAdmin.Text = "   Akun";
+            btnAkunAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnAkunAdmin.UseVisualStyleBackColor = true;
+            btnAkunAdmin.Click += button2_Click;
             // 
-            // button3
+            // btnStokAdmin
             // 
-            button3.Location = new Point(22, 317);
-            button3.Name = "button3";
-            button3.Size = new Size(298, 55);
-            button3.TabIndex = 2;
-            button3.Text = "   Stok Susu";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnStokAdmin.Location = new Point(22, 317);
+            btnStokAdmin.Name = "btnStokAdmin";
+            btnStokAdmin.Size = new Size(298, 55);
+            btnStokAdmin.TabIndex = 2;
+            btnStokAdmin.Text = "   Stok Susu";
+            btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnStokAdmin.UseVisualStyleBackColor = true;
+            btnStokAdmin.Click += button3_Click;
             // 
-            // button4
+            // btnPermintaanAdmin
             // 
-            button4.Location = new Point(22, 388);
-            button4.Name = "button4";
-            button4.Size = new Size(298, 55);
-            button4.TabIndex = 3;
-            button4.Text = "   Permintaan Susu";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = true;
+            btnPermintaanAdmin.Location = new Point(22, 388);
+            btnPermintaanAdmin.Name = "btnPermintaanAdmin";
+            btnPermintaanAdmin.Size = new Size(298, 55);
+            btnPermintaanAdmin.TabIndex = 3;
+            btnPermintaanAdmin.Text = "   Permintaan Susu";
+            btnPermintaanAdmin.TextAlign = ContentAlignment.MiddleLeft;
+            btnPermintaanAdmin.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnLaporanPenjualan
             // 
-            button5.Location = new Point(22, 459);
-            button5.Name = "button5";
-            button5.Size = new Size(298, 55);
-            button5.TabIndex = 4;
-            button5.Text = "   Laporan Penjualan";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
-            button5.UseVisualStyleBackColor = true;
+            btnLaporanPenjualan.Location = new Point(22, 459);
+            btnLaporanPenjualan.Name = "btnLaporanPenjualan";
+            btnLaporanPenjualan.Size = new Size(298, 55);
+            btnLaporanPenjualan.TabIndex = 4;
+            btnLaporanPenjualan.Text = "   Laporan Penjualan";
+            btnLaporanPenjualan.TextAlign = ContentAlignment.MiddleLeft;
+            btnLaporanPenjualan.UseVisualStyleBackColor = true;
             // 
             // lblWelcome_M
             // 
@@ -144,11 +145,11 @@
             ClientSize = new Size(1898, 1024);
             Controls.Add(panel4);
             Controls.Add(lblWelcome_M);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnLaporanPenjualan);
+            Controls.Add(btnPermintaanAdmin);
+            Controls.Add(btnStokAdmin);
+            Controls.Add(btnAkunAdmin);
+            Controls.Add(btnHalamanAdmin);
             DoubleBuffered = true;
             Name = "V_HalBerandaAdmin";
             StartPosition = FormStartPosition.CenterScreen;
@@ -161,11 +162,11 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button btnHalamanAdmin;
+        private Button btnAkunAdmin;
+        private Button btnStokAdmin;
+        private Button btnPermintaanAdmin;
+        private Button btnLaporanPenjualan;
         private Label lblWelcome_M;
         private Panel panel4;
         private Label lblPenghasilan;

@@ -65,6 +65,7 @@
             btnStokAdmin.Text = "   Stok Susu";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnStokAdmin.UseVisualStyleBackColor = true;
+            btnStokAdmin.Click += btnStokAdmin_Click;
             // 
             // btnAkun
             // 
@@ -75,6 +76,7 @@
             btnAkun.Text = "   Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = true;
+            btnAkun.Click += btnAkun_Click;
             // 
             // btnHalAdmin
             // 
@@ -85,6 +87,7 @@
             btnHalAdmin.Text = "   Halaman Beranda";
             btnHalAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnHalAdmin.UseVisualStyleBackColor = true;
+            btnHalAdmin.Click += btnHalAdmin_Click;
             // 
             // btnTambahProduk
             // 
