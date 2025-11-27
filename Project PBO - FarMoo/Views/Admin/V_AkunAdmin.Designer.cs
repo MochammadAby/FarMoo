@@ -70,6 +70,7 @@
             btnStokSusu.Text = "   Stok Susu";
             btnStokSusu.TextAlign = ContentAlignment.MiddleLeft;
             btnStokSusu.UseVisualStyleBackColor = true;
+            btnStokSusu.Click += btnStokSusu_Click;
             // 
             // btnAkunAdmin
             // 

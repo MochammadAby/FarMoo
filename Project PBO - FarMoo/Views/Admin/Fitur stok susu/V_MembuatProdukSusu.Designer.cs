@@ -62,7 +62,7 @@
             btnStokAdmin.Name = "btnStokAdmin";
             btnStokAdmin.Size = new Size(298, 55);
             btnStokAdmin.TabIndex = 7;
-            btnStokAdmin.Text = "   Stok Susu";
+            btnStokAdmin.Text = " Produk";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnStokAdmin.UseVisualStyleBackColor = true;
             btnStokAdmin.Click += btnStokAdmin_Click;

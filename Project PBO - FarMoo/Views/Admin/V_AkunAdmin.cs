@@ -1,5 +1,8 @@
-﻿using Project_PBO___FarMoo.Controllers;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,6 +60,13 @@ namespace Project_PBO___FarMoo.Views.Admin
         private void btnBerandaAdmin_Click(object sender, EventArgs e)
         {
             var profil = new V_HalBerandaAdmin(currentUser);
+            profil.Show();
+            this.Hide();
+        }
+
+        private void btnStokSusu_Click(object sender, EventArgs e)
+        {
+            var profil = new V_MembuatProdukSusu(currentUser);
             profil.Show();
             this.Hide();
         }
