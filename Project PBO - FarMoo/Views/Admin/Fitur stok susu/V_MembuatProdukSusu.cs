@@ -85,7 +85,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                     Font = new Font("Segoe UI", 9f),
                     Location = new Point(textLeft, 80),
                     AutoSize = false,
-                    Size = new Size(textWidth, 18),
+                    Size = new Size(textWidth, 20),
                     Text = $"Tanggal Produksi : {s.TanggalProduksi:dd/MM/yyyy}"
                 };
 
@@ -95,7 +95,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                     Font = new Font("Segoe UI", 9f),
                     Location = new Point(textLeft, 105),
                     AutoSize = false,
-                    Size = new Size(textWidth, 18),
+                    Size = new Size(textWidth, 20),
                     Text = $"Tanggal Expired : {s.TanggalExpired:dd/MM/yyyy}"
                 };
 
