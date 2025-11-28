@@ -146,6 +146,7 @@
             // 
             // pbFotoProfil
             // 
+            pbFotoProfil.BackgroundImageLayout = ImageLayout.Stretch;
             pbFotoProfil.Location = new Point(489, 293);
             pbFotoProfil.Name = "pbFotoProfil";
             pbFotoProfil.Size = new Size(349, 336);

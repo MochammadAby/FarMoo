@@ -37,16 +37,13 @@ namespace Project_PBO___FarMoo.Views
             tbPassword.Text = currentUser.Password;
             tbEmail.Text = currentUser.Email;
             tbNoTelp.Text = currentUser.NomorHp;
-            if (currentUser.Foto != null)
+
+            if (currentUser.Foto != null && currentUser.Foto.Length > 0)
             {
                 pbFotoProfil.Image = ImageHelper.BinaryToImage(currentUser.Foto);
-            }
-            else
-            {
-                pbFotoProfil.Image = null; // atau beri gambar default
+                pbFotoProfil.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
-
         private void btnubahprofil_Click(object sender, EventArgs e)
         {
             byte[] fotoBytes = null;
@@ -100,12 +97,15 @@ namespace Project_PBO___FarMoo.Views
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            using OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                pbFotoProfil.Image = Image.FromFile(ofd.FileName);
+                Image img = Image.FromFile(ofd.FileName);
+                pbFotoProfil.Image = img;
+
+                currentUser.Foto = ImageHelper.ImageToBinary(img);
             }
         }
     }
