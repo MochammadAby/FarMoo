@@ -38,7 +38,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                 // ==== CARD ====
                 var card = new Panel
                 {
-                    Width = 360,  // diperbesar
+                    Width = 400,  // diperbesar
                     Height = 230,
                     BackColor = Color.FromArgb(0, 70, 150),
                     Margin = new Padding(20)
