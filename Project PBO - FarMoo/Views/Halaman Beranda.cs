@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu;
+
 
 namespace Project_PBO___FarMoo.Views
 {
@@ -47,6 +49,13 @@ namespace Project_PBO___FarMoo.Views
         public void UpdateWelcome()
         {
             lblWelcome.Text = $"Halo, {currentUser.NamaLengkap} 👋";
+        }
+
+        private void btnPermintaan_Click(object sender, EventArgs e)
+        {
+            var profil = new V_MembuatPermintaanTengkulak(currentUser);
+            profil.Show();
+            this.Hide();
         }
     }
 }

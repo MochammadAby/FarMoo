@@ -4,6 +4,7 @@ using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -87,6 +88,13 @@ namespace Project_PBO___FarMoo.Views
         private void btnBeranda_Click(object sender, EventArgs e)
         {
             var profil = new Halaman_Beranda(currentUser);
+            profil.Show();
+            this.Hide();
+        }
+
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+            var profil = new V_MembuatPermintaanTengkulak(currentUser);
             profil.Show();
             this.Hide();
         }

@@ -85,17 +85,17 @@ namespace Project_PBO___FarMoo.Controllers
             db.Open();
 
             const string sql = @"
-                UPDATE produk_susu
-                SET nama_produk = @nama_produk,
-                    harga       = @harga,
-                    images      = @image
-                WHERE produk_id = @produk_id;";
+            UPDATE produk_susu
+            SET nama_produk = @nama_produk,
+            harga       = @harga,
+            image       = @images   -- <- ganti di sini
+            WHERE produk_id = @produk_id;";
 
             using var cmd = new NpgsqlCommand(sql, db.Connection);
             cmd.Parameters.AddWithValue("@produk_id", p.ProdukId);
             cmd.Parameters.AddWithValue("@nama_produk", p.NamaProduk);
             cmd.Parameters.AddWithValue("@harga", p.Harga);
-            cmd.Parameters.Add("@image", NpgsqlDbType.Bytea)
+            cmd.Parameters.Add("@images", NpgsqlTypes.NpgsqlDbType.Bytea)
                           .Value = (object?)p.Images ?? DBNull.Value;
 
             cmd.ExecuteNonQuery();

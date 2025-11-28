@@ -32,6 +32,8 @@
             btnRiwayat = new Button();
             btnPermintaan = new Button();
             btnAkun = new Button();
+            flpProduk = new FlowLayoutPanel();
+            btnCheckout = new Button();
             SuspendLayout();
             // 
             // btnHalTengkulak
@@ -81,6 +83,23 @@
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = true;
             // 
+            // flpProduk
+            // 
+            flpProduk.AutoScroll = true;
+            flpProduk.Location = new Point(353, 153);
+            flpProduk.Name = "flpProduk";
+            flpProduk.Size = new Size(1533, 704);
+            flpProduk.TabIndex = 11;
+            // 
+            // btnCheckout
+            // 
+            btnCheckout.Location = new Point(958, 903);
+            btnCheckout.Name = "btnCheckout";
+            btnCheckout.Size = new Size(358, 75);
+            btnCheckout.TabIndex = 12;
+            btnCheckout.Text = "Checkout";
+            btnCheckout.UseVisualStyleBackColor = true;
+            // 
             // V_MembuatPermintaanTengkulak
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -88,6 +107,8 @@
             BackgroundImage = Properties.Resources.Template_Membuat_Produk_Admin;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnCheckout);
+            Controls.Add(flpProduk);
             Controls.Add(btnHalTengkulak);
             Controls.Add(btnRiwayat);
             Controls.Add(btnPermintaan);
@@ -104,5 +125,7 @@
         private Button btnRiwayat;
         private Button btnPermintaan;
         private Button btnAkun;
+        private FlowLayoutPanel flpProduk;
+        private Button btnCheckout;
     }
 }
