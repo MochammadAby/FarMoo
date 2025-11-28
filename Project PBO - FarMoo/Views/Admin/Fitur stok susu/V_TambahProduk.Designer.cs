@@ -72,7 +72,7 @@
             // 
             // btnPermintaanAdmin
             // 
-            btnPermintaanAdmin.Location = new Point(22, 391);
+            btnPermintaanAdmin.Location = new Point(22, 388);
             btnPermintaanAdmin.Name = "btnPermintaanAdmin";
             btnPermintaanAdmin.Size = new Size(298, 55);
             btnPermintaanAdmin.TabIndex = 13;
@@ -83,18 +83,19 @@
             // 
             // btnStokAdmin
             // 
-            btnStokAdmin.Location = new Point(22, 320);
+            btnStokAdmin.BackColor = Color.CornflowerBlue;
+            btnStokAdmin.Location = new Point(22, 317);
             btnStokAdmin.Name = "btnStokAdmin";
             btnStokAdmin.Size = new Size(298, 55);
             btnStokAdmin.TabIndex = 12;
-            btnStokAdmin.Text = "   Stok Susu";
+            btnStokAdmin.Text = "   Produk";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnStokAdmin.UseVisualStyleBackColor = true;
+            btnStokAdmin.UseVisualStyleBackColor = false;
             btnStokAdmin.Click += btnStokAdmin_Click;
             // 
             // btnAkun
             // 
-            btnAkun.Location = new Point(22, 249);
+            btnAkun.Location = new Point(22, 246);
             btnAkun.Name = "btnAkun";
             btnAkun.Size = new Size(298, 55);
             btnAkun.TabIndex = 11;

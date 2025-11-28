@@ -42,13 +42,14 @@
             // 
             // btnHalamanAdmin
             // 
+            btnHalamanAdmin.BackColor = Color.CornflowerBlue;
             btnHalamanAdmin.Location = new Point(22, 175);
             btnHalamanAdmin.Name = "btnHalamanAdmin";
             btnHalamanAdmin.Size = new Size(298, 55);
             btnHalamanAdmin.TabIndex = 0;
             btnHalamanAdmin.Text = "   Halaman Beranda";
             btnHalamanAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnHalamanAdmin.UseVisualStyleBackColor = true;
+            btnHalamanAdmin.UseVisualStyleBackColor = false;
             btnHalamanAdmin.Click += btnHalamanAdmin_Click;
             // 
             // btnAkunAdmin
@@ -68,7 +69,7 @@
             btnStokAdmin.Name = "btnStokAdmin";
             btnStokAdmin.Size = new Size(298, 55);
             btnStokAdmin.TabIndex = 2;
-            btnStokAdmin.Text = "   Stok Susu";
+            btnStokAdmin.Text = "   Produk";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnStokAdmin.UseVisualStyleBackColor = true;
             btnStokAdmin.Click += button3_Click;

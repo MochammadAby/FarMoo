@@ -18,8 +18,6 @@ namespace Project_PBO___FarMoo.Controllers
         {
             _db = new DbContext();
         }
-
-        // ========== LOGIN ==========
         public User Login(string username, string password)
         {
             _db.Open();
@@ -134,5 +132,18 @@ namespace Project_PBO___FarMoo.Controllers
             return cmd.ExecuteNonQuery() > 0;
         }
 
+        public void UpdateFoto(int userId, byte[] foto)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            string query = @"UPDATE akun SET foto = @f WHERE user_id = @id";
+
+            using var cmd = new NpgsqlCommand(query, db.Connection);
+            cmd.Parameters.AddWithValue("@f", (object)foto ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@id", userId);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

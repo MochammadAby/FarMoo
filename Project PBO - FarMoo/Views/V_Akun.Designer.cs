@@ -150,6 +150,7 @@
             pbFotoProfil.Location = new Point(489, 293);
             pbFotoProfil.Name = "pbFotoProfil";
             pbFotoProfil.Size = new Size(349, 336);
+            pbFotoProfil.SizeMode = PictureBoxSizeMode.Zoom;
             pbFotoProfil.TabIndex = 11;
             pbFotoProfil.TabStop = false;
             pbFotoProfil.Click += pbFotoProfil_Click;

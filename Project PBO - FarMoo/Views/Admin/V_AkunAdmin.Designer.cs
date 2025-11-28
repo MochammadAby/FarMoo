@@ -39,6 +39,9 @@
             tbEmail = new TextBox();
             tbNoTelp = new TextBox();
             btnUbahProfilAdmin = new Button();
+            btnUbahFoto = new Button();
+            pbFotoPeternak = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbFotoPeternak).BeginInit();
             SuspendLayout();
             // 
             // btnLaporanPenjualan
@@ -67,7 +70,7 @@
             btnStokSusu.Name = "btnStokSusu";
             btnStokSusu.Size = new Size(298, 55);
             btnStokSusu.TabIndex = 7;
-            btnStokSusu.Text = "   Stok Susu";
+            btnStokSusu.Text = "   Produk";
             btnStokSusu.TextAlign = ContentAlignment.MiddleLeft;
             btnStokSusu.UseVisualStyleBackColor = true;
             btnStokSusu.Click += btnStokSusu_Click;
@@ -139,6 +142,27 @@
             btnUbahProfilAdmin.UseVisualStyleBackColor = true;
             btnUbahProfilAdmin.Click += btnUbahProfilAdmin_Click;
             // 
+            // btnUbahFoto
+            // 
+            btnUbahFoto.Location = new Point(596, 695);
+            btnUbahFoto.Name = "btnUbahFoto";
+            btnUbahFoto.Size = new Size(112, 34);
+            btnUbahFoto.TabIndex = 17;
+            btnUbahFoto.Text = "Ubah Foto";
+            btnUbahFoto.UseVisualStyleBackColor = true;
+            btnUbahFoto.Click += btnUbahFoto_Click;
+            // 
+            // pbFotoPeternak
+            // 
+            pbFotoPeternak.BackColor = Color.White;
+            pbFotoPeternak.BackgroundImageLayout = ImageLayout.Stretch;
+            pbFotoPeternak.Location = new Point(486, 323);
+            pbFotoPeternak.Name = "pbFotoPeternak";
+            pbFotoPeternak.Size = new Size(349, 336);
+            pbFotoPeternak.SizeMode = PictureBoxSizeMode.Zoom;
+            pbFotoPeternak.TabIndex = 16;
+            pbFotoPeternak.TabStop = false;
+            // 
             // V_AkunAdmin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -146,6 +170,8 @@
             BackgroundImage = Properties.Resources.Profil_Peternak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnUbahFoto);
+            Controls.Add(pbFotoPeternak);
             Controls.Add(btnUbahProfilAdmin);
             Controls.Add(tbNoTelp);
             Controls.Add(tbEmail);
@@ -161,6 +187,7 @@
             Name = "V_AkunAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "V_AkunAdmin";
+            ((System.ComponentModel.ISupportInitialize)pbFotoPeternak).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,5 +205,7 @@
         private TextBox tbEmail;
         private TextBox tbNoTelp;
         private Button btnUbahProfilAdmin;
+        private Button btnUbahFoto;
+        private PictureBox pbFotoPeternak;
     }
 }

@@ -59,13 +59,14 @@
             // 
             // btnStokAdmin
             // 
+            btnStokAdmin.BackColor = Color.CornflowerBlue;
             btnStokAdmin.Location = new Point(22, 317);
             btnStokAdmin.Name = "btnStokAdmin";
             btnStokAdmin.Size = new Size(298, 55);
             btnStokAdmin.TabIndex = 7;
-            btnStokAdmin.Text = " Produk";
+            btnStokAdmin.Text = "   Produk";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnStokAdmin.UseVisualStyleBackColor = true;
+            btnStokAdmin.UseVisualStyleBackColor = false;
             btnStokAdmin.Click += btnStokAdmin_Click;
             // 
             // btnAkun
