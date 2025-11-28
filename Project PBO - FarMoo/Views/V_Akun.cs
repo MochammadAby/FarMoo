@@ -92,7 +92,7 @@ namespace Project_PBO___FarMoo.Views
             this.Hide();
         }
 
-        private void btnAkun_Click(object sender, EventArgs e)
+        private void btnPermintaan_Click(object sender, EventArgs e)
         {
             var profil = new V_MembuatPermintaanTengkulak(currentUser);
             profil.Show();

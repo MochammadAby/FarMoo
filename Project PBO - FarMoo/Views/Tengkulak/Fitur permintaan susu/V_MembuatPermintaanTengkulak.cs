@@ -55,7 +55,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                 var card = new Panel
                 {
                     Width = 260,
-                    Height = 280,
+                    Height = 320,
                     BackColor = Color.FromArgb(0, 60, 130),
                     Margin = new Padding(30, 20, 0, 20)
                 };
@@ -137,7 +137,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                 var lblJumlah = new Label
                 {
                     AutoSize = true,
-                    Location = new Point(10, 260),
+                    Location = new Point(10, 280),
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 8),
                     Text = "Jumlah :"
@@ -146,8 +146,8 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                 // TextBox jumlah
                 var txtJumlah = new TextBox
                 {
-                    Width = 80,
-                    Location = new Point(70, 256)
+                    Width = 100,
+                    Location = new Point(90, 280)
                 };
 
                 var data = new CardData
@@ -236,7 +236,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
             }
         }
 
-        private void btnHalamanBeranda_Click(object sender, EventArgs e)
+        private void btnHalTengkulak_Click(object sender, EventArgs e)
         {
             NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
         }
@@ -245,5 +245,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
         {
             NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
         }
+
+
     }
 }

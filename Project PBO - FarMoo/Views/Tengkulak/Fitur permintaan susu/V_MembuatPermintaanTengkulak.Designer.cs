@@ -48,6 +48,7 @@
             btnHalTengkulak.Text = "   Halaman Beranda";
             btnHalTengkulak.TextAlign = ContentAlignment.MiddleLeft;
             btnHalTengkulak.UseVisualStyleBackColor = false;
+            btnHalTengkulak.Click += btnHalTengkulak_Click;
             // 
             // btnRiwayat
             // 
@@ -82,6 +83,7 @@
             btnAkun.Text = "   Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = true;
+            btnAkun.Click += btnAkun_Click;
             // 
             // flpProduk
             // 

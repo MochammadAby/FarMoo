@@ -105,6 +105,7 @@
             btnPermintaan.Text = "   Permintaan susu";
             btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaan.UseVisualStyleBackColor = true;
+            btnPermintaan.Click += btnPermintaan_Click;
             // 
             // btnRiwayat
             // 
