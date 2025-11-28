@@ -112,7 +112,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Templet_Permintaan_susu_tengkulak;
+            BackgroundImage = Properties.Resources.Template_Membuat_Produk_Admin;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
             Controls.Add(flpProduk);

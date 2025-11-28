@@ -29,81 +29,86 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 
         private void MuatDataStok()
         {
-            flpProduk.Controls.Clear();   // flpProduk = FlowLayoutPanel di Designer
+            flpProduk.Controls.Clear();
 
-            var daftarStok = _stokController.GetStokBatchTerbaru(); // ambil data stok + produk
+            var daftarStok = _stokController.GetStokBatchTerbaru();
 
-            foreach (var s in daftarStok)   // s = M_StokBatch
+            foreach (var s in daftarStok)
             {
-                // ====== CARD ======
+                // ==== CARD ====
                 var card = new Panel
                 {
-                    Width = 280,
-                    Height = 220,
+                    Width = 360,  // diperbesar
+                    Height = 230,
                     BackColor = Color.FromArgb(0, 70, 150),
                     Margin = new Padding(20)
                 };
 
-                // ====== GAMBAR KIRI ======
+                // ==== GAMBAR KIRI ====
                 var pic = new PictureBox
                 {
-                    Width = 90,
+                    Width = 95,
                     Height = 170,
-                    Location = new Point(15, 30),
+                    Location = new Point(15, 35),
                     SizeMode = PictureBoxSizeMode.Zoom
                 };
                 if (s.Images != null && s.Images.Length > 0)
-                {
                     pic.Image = ImageHelper.BinaryToImage(s.Images);
-                }
 
-                // ====== LABEL2 ======
+                // area teks di kanan gambar
+                int textLeft = 130;
+                int textWidth = card.Width - textLeft - 15; // sisa lebar card
+
                 var lblNama = new Label
                 {
-                    AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 12f, FontStyle.Bold),
-                    Location = new Point(120, 15),
-                    Text = s.NamaProduk ?? "-"
+                    Location = new Point(textLeft, 15),
+                    AutoSize = false,
+                    Size = new Size(textWidth, 28)
                 };
+                lblNama.Text = s.NamaProduk ?? "-";
 
                 var lblJumlah = new Label
                 {
-                    AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 9f),
-                    Location = new Point(120, 55),
+                    Location = new Point(textLeft, 55),
+                    AutoSize = false,
+                    Size = new Size(textWidth, 20),
                     Text = $"Jumlah : {s.JumlahBotol}"
                 };
 
                 var lblTglProd = new Label
                 {
-                    AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 9f),
-                    Location = new Point(120, 80),
+                    Location = new Point(textLeft, 80),
+                    AutoSize = false,
+                    Size = new Size(textWidth, 20),
                     Text = $"Tanggal Produksi : {s.TanggalProduksi:dd/MM/yyyy}"
                 };
 
                 var lblTglExp = new Label
                 {
-                    AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 9f),
-                    Location = new Point(120, 105),
+                    Location = new Point(textLeft, 105),
+                    AutoSize = false,
+                    Size = new Size(textWidth, 20),
                     Text = $"Tanggal Expired : {s.TanggalExpired:dd/MM/yyyy}"
                 };
 
                 var lblMl = new Label
                 {
-                    AutoSize = true,
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 11f, FontStyle.Bold),
                     Location = new Point(20, 190),
+                    AutoSize = true,
                     Text = $"{(s.SatuanMl ?? 0)} ml"
                 };
 
-                // ====== INI DIA: TOMBOL EDIT ======
+                // tombol edit tetap
                 var btnEdit = new PictureBox
                 {
                     Width = 40,
@@ -111,15 +116,10 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Location = new Point(card.Width - 50, card.Height - 50),
                     Cursor = Cursors.Hand,
-                    Tag = s   // simpan M_StokBatch di Tag
+                    Tag = s
                 };
+                btnEdit.Click += BtnEdit_Click;
 
-                // kalau punya icon edit di Resources
-                // btnEdit.Image = Properties.Resources.icon_edit;
-
-                btnEdit.Click += BtnEdit_Click;   // <-- event handler-nya di bawah
-
-                // ====== MASUKKAN KE CARD ======
                 card.Controls.Add(pic);
                 card.Controls.Add(lblNama);
                 card.Controls.Add(lblJumlah);
@@ -128,7 +128,6 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                 card.Controls.Add(lblMl);
                 card.Controls.Add(btnEdit);
 
-                // ====== TAMBAHKAN CARD KE FLOWLAYOUT ======
                 flpProduk.Controls.Add(card);
             }
         }
