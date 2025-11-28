@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 {
-    public partial class Membuat_Permintaan_Susu_Tengkulak : Form
+    public partial class V_MembuatPermintaanTengkulak : Form
     {
-        public Membuat_Permintaan_Susu_Tengkulak()
+        public V_MembuatPermintaanTengkulak()
         {
             InitializeComponent();
         }
