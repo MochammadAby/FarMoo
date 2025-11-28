@@ -15,7 +15,7 @@ namespace Project_PBO___FarMoo.Controllers
             using var db = new DbContext();
             db.Open();
 
-            string query = @"SELECT COALESCE(SUM(""Total_harga""), 0) 
+            string query = @"SELECT COALESCE(SUM(""total_harga""), 0) 
                             FROM transaksi
                              WHERE user_id = @id";
 
