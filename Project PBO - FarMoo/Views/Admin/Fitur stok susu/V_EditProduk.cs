@@ -33,8 +33,8 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 
         private void V_EditProduk_Load(object? sender, EventArgs e)
         {
-            // Kalau kamu mau, bisa panggil LoadJenisBotol(); tapi combobox bisa di-disable kalau jenis tidak boleh diubah
-            cmbJenisBotol.Enabled = false; // misal: jenis botol tidak diubah lewat form ini
+            //Combobox bisa di-disable kalau jenis tidak boleh diubah
+            cmbJenisBotol.Enabled = true; // misal: jenis botol tidak diubah lewat form ini
 
             // Prefill data dari stok & produk
             txtNamaProduk.Text = _stokLama.NamaProduk ?? "";
