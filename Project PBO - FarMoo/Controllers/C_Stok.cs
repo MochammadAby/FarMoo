@@ -104,5 +104,19 @@ namespace Project_PBO___FarMoo.Controllers
 
             cmd.ExecuteNonQuery();
         }
+
+        public bool DeleteStokById(int stokId)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"DELETE FROM stok_batch WHERE stok_id = @id;";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@id", stokId);
+
+            int rows = cmd.ExecuteNonQuery();
+            return rows > 0;  // true jika berhasil
+        }
     }
 }

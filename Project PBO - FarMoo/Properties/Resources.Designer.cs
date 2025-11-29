@@ -113,6 +113,26 @@ namespace Project_PBO___FarMoo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_edit_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("logo_edit-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_sampah_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("logo_sampah-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Profil__2_ {
             get {
                 object obj = ResourceManager.GetObject("Profil (2)", resourceCulture);
