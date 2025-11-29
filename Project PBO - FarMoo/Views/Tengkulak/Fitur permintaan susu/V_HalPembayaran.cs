@@ -1,34 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Project_PBO___FarMoo.Models;
+﻿using Project_PBO___FarMoo.Models;
 using AppUser = Project_PBO___FarMoo.Models.User;
-
 using Npgsql;
 using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Helper;
-using Project_PBO___FarMoo.Models;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using AppUser = Project_PBO___FarMoo.Models.User;
 
 namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 {
     public partial class V_HalPembayaran : Form
     {
         private readonly AppUser _user;
-        private readonly List<CheckoutItem> _items;
+        private readonly List<M_CheckoutItem> _items;
         private int _total;
 
-        public V_HalPembayaran(AppUser user, List<CheckoutItem> items)
+        public V_HalPembayaran(AppUser user, List<M_CheckoutItem> items)
         {
             _user = user;
             _items = items;

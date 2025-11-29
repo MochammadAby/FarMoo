@@ -7,7 +7,7 @@ using Project_PBO___FarMoo.Models;
 
 namespace Project_PBO___FarMoo.Models
 {
-    internal class M_CheckoutItem
+   public  class M_CheckoutItem
     {
             public int ProdukId { get; set; }
             public int StokId { get; set; }
