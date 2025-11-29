@@ -116,17 +116,35 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                     Text = $"{(s.SatuanMl ?? 0)} ml"
                 };
 
-                // tombol edit tetap
-                var btnEdit = new PictureBox
+                // tombol hapus (kotak merah)
+                var btnHapusProduk = new PictureBox
                 {
-                    Width = 40,
-                    Height = 40,
+                    Width = 30,
+                    Height = 30,
                     SizeMode = PictureBoxSizeMode.Zoom,
-                    Location = new Point(card.Width - 50, card.Height - 50),
+                    Location = new Point(card.Width - 45, card.Height - 45),
                     Cursor = Cursors.Hand,
-                    Tag = s
+                    Tag = s,
+                    Image = Properties.Resources.logo_sampah_removebg_preview
                 };
-                btnEdit.Click += BtnEdit_Click;
+                // optional: beri warna merah biar kelihatan
+                btnHapusProduk.Click += btnHapusProduk_Click;
+
+
+                // tombol edit tetap
+                // tombol edit (kotak kuning)
+                var btnEditProduk = new PictureBox
+                {
+                    Width = 30,
+                    Height = 30,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(card.Width - 85, card.Height - 45),
+                    Cursor = Cursors.Hand,
+                    Tag = s,
+                    Image = Properties.Resources.logo_edit_removebg_preview
+                };
+                btnEditProduk.Click += BtnEditProduk_Click;
+
 
                 card.Controls.Add(pic);
                 card.Controls.Add(lblNama);
@@ -134,13 +152,15 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                 card.Controls.Add(lblTglProd);
                 card.Controls.Add(lblTglExp);
                 card.Controls.Add(lblMl);
-                card.Controls.Add(btnEdit);
+                card.Controls.Add(btnHapusProduk);
+                card.Controls.Add(btnEditProduk);
+
 
                 flpProduk.Controls.Add(card);
             }
         }
 
-        private void BtnEdit_Click(object sender, EventArgs e)
+        private void BtnEditProduk_Click(object sender, EventArgs e)
         {
             var pb = (PictureBox)sender;
             var stok = pb.Tag as M_StokBatch;
@@ -150,11 +170,41 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    MuatDataStok();  
+                    MuatDataStok();
                 }
             }
         }
 
+        private void btnHapusProduk_Click(object sender, EventArgs e)
+        {
+            var pb = (PictureBox)sender;
+            var stok = pb.Tag as M_StokBatch;
+            if (stok == null) return;
+
+            var konfirm = MessageBox.Show(
+                $"Yakin ingin menghapus produk '{stok.NamaProduk}'?",
+                "Konfirmasi Hapus Produk",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (konfirm == DialogResult.Yes)
+            {
+                bool sukses = _stokController.DeleteStokById(stok.StokId);
+
+                if (sukses)
+                {
+                    MessageBox.Show("Produk berhasil dihapus.", "Sukses",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    MuatDataStok(); // refresh UI
+                }
+                else
+                {
+                    MessageBox.Show("Gagal menghapus produk.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         private void btnTambahProduk_Click(object sender, EventArgs e)
         {

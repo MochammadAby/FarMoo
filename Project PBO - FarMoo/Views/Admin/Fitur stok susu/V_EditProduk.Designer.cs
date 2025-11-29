@@ -55,7 +55,7 @@
             // picPreview
             // 
             picPreview.BorderStyle = BorderStyle.FixedSingle;
-            picPreview.Location = new Point(1010, 636);
+            picPreview.Location = new Point(702, 221);
             picPreview.Name = "picPreview";
             picPreview.Size = new Size(95, 260);
             picPreview.SizeMode = PictureBoxSizeMode.Zoom;
@@ -65,7 +65,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(878, 595);
+            label7.Location = new Point(677, 159);
             label7.Name = "label7";
             label7.Size = new Size(140, 25);
             label7.TabIndex = 52;
@@ -109,7 +109,7 @@
             // 
             // btnBatal
             // 
-            btnBatal.Location = new Point(878, 953);
+            btnBatal.Location = new Point(877, 655);
             btnBatal.Name = "btnBatal";
             btnBatal.Size = new Size(116, 39);
             btnBatal.TabIndex = 47;
@@ -118,7 +118,7 @@
             // 
             // btnSimpan
             // 
-            btnSimpan.Location = new Point(1105, 944);
+            btnSimpan.Location = new Point(1083, 655);
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(128, 39);
             btnSimpan.TabIndex = 46;

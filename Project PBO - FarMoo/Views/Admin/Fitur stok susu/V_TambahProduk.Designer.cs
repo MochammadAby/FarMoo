@@ -50,9 +50,10 @@
             // 
             // btnHalAdmin
             // 
-            btnHalAdmin.Location = new Point(22, 175);
+            btnHalAdmin.Location = new Point(15, 105);
+            btnHalAdmin.Margin = new Padding(2, 2, 2, 2);
             btnHalAdmin.Name = "btnHalAdmin";
-            btnHalAdmin.Size = new Size(298, 55);
+            btnHalAdmin.Size = new Size(209, 33);
             btnHalAdmin.TabIndex = 15;
             btnHalAdmin.Text = "   Halaman Beranda";
             btnHalAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -61,9 +62,10 @@
             // 
             // btnLaporanAdmin
             // 
-            btnLaporanAdmin.Location = new Point(22, 462);
+            btnLaporanAdmin.Location = new Point(15, 277);
+            btnLaporanAdmin.Margin = new Padding(2, 2, 2, 2);
             btnLaporanAdmin.Name = "btnLaporanAdmin";
-            btnLaporanAdmin.Size = new Size(298, 55);
+            btnLaporanAdmin.Size = new Size(209, 33);
             btnLaporanAdmin.TabIndex = 14;
             btnLaporanAdmin.Text = "   Laporan Penjualan";
             btnLaporanAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -72,9 +74,10 @@
             // 
             // btnPermintaanAdmin
             // 
-            btnPermintaanAdmin.Location = new Point(22, 388);
+            btnPermintaanAdmin.Location = new Point(15, 233);
+            btnPermintaanAdmin.Margin = new Padding(2, 2, 2, 2);
             btnPermintaanAdmin.Name = "btnPermintaanAdmin";
-            btnPermintaanAdmin.Size = new Size(298, 55);
+            btnPermintaanAdmin.Size = new Size(209, 33);
             btnPermintaanAdmin.TabIndex = 13;
             btnPermintaanAdmin.Text = "   Permintaan Susu";
             btnPermintaanAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -84,9 +87,10 @@
             // btnStokAdmin
             // 
             btnStokAdmin.BackColor = Color.CornflowerBlue;
-            btnStokAdmin.Location = new Point(22, 317);
+            btnStokAdmin.Location = new Point(15, 190);
+            btnStokAdmin.Margin = new Padding(2, 2, 2, 2);
             btnStokAdmin.Name = "btnStokAdmin";
-            btnStokAdmin.Size = new Size(298, 55);
+            btnStokAdmin.Size = new Size(209, 33);
             btnStokAdmin.TabIndex = 12;
             btnStokAdmin.Text = "   Produk";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -95,9 +99,10 @@
             // 
             // btnAkun
             // 
-            btnAkun.Location = new Point(22, 246);
+            btnAkun.Location = new Point(15, 148);
+            btnAkun.Margin = new Padding(2, 2, 2, 2);
             btnAkun.Name = "btnAkun";
-            btnAkun.Size = new Size(298, 55);
+            btnAkun.Size = new Size(209, 33);
             btnAkun.TabIndex = 11;
             btnAkun.Text = "   Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
@@ -106,79 +111,89 @@
             // 
             // txtNamaProduk
             // 
-            txtNamaProduk.Location = new Point(879, 199);
+            txtNamaProduk.Location = new Point(615, 119);
+            txtNamaProduk.Margin = new Padding(2, 2, 2, 2);
             txtNamaProduk.Name = "txtNamaProduk";
-            txtNamaProduk.Size = new Size(333, 31);
+            txtNamaProduk.Size = new Size(234, 23);
             txtNamaProduk.TabIndex = 16;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(879, 161);
+            label1.Location = new Point(615, 97);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(124, 25);
+            label1.Size = new Size(82, 15);
             label1.TabIndex = 17;
             label1.Text = "Nama_produk";
             // 
             // cmbJenisBotol
             // 
             cmbJenisBotol.FormattingEnabled = true;
-            cmbJenisBotol.Location = new Point(879, 271);
+            cmbJenisBotol.Location = new Point(615, 163);
+            cmbJenisBotol.Margin = new Padding(2, 2, 2, 2);
             cmbJenisBotol.Name = "cmbJenisBotol";
-            cmbJenisBotol.Size = new Size(333, 33);
+            cmbJenisBotol.Size = new Size(234, 23);
             cmbJenisBotol.TabIndex = 18;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(878, 241);
+            label2.Location = new Point(615, 145);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(98, 25);
+            label2.Size = new Size(65, 15);
             label2.TabIndex = 19;
             label2.Text = "Jenis_Botol";
             // 
             // numHarga
             // 
-            numHarga.Location = new Point(878, 344);
+            numHarga.Location = new Point(615, 206);
+            numHarga.Margin = new Padding(2, 2, 2, 2);
             numHarga.Name = "numHarga";
-            numHarga.Size = new Size(334, 31);
+            numHarga.Size = new Size(235, 23);
             numHarga.TabIndex = 20;
             // 
             // dtpTanggalProduksi
             // 
-            dtpTanggalProduksi.Location = new Point(879, 415);
+            dtpTanggalProduksi.Location = new Point(615, 249);
+            dtpTanggalProduksi.Margin = new Padding(2, 2, 2, 2);
             dtpTanggalProduksi.Name = "dtpTanggalProduksi";
-            dtpTanggalProduksi.Size = new Size(337, 31);
+            dtpTanggalProduksi.Size = new Size(237, 23);
             dtpTanggalProduksi.TabIndex = 21;
             // 
             // umJumlahBotol
             // 
-            umJumlahBotol.Location = new Point(879, 486);
+            umJumlahBotol.Location = new Point(615, 292);
+            umJumlahBotol.Margin = new Padding(2, 2, 2, 2);
             umJumlahBotol.Name = "umJumlahBotol";
-            umJumlahBotol.Size = new Size(337, 31);
+            umJumlahBotol.Size = new Size(237, 23);
             umJumlahBotol.TabIndex = 22;
             // 
             // dtpTanggalExpired
             // 
-            dtpTanggalExpired.Location = new Point(879, 551);
+            dtpTanggalExpired.Location = new Point(615, 331);
+            dtpTanggalExpired.Margin = new Padding(2, 2, 2, 2);
             dtpTanggalExpired.Name = "dtpTanggalExpired";
-            dtpTanggalExpired.Size = new Size(333, 31);
+            dtpTanggalExpired.Size = new Size(234, 23);
             dtpTanggalExpired.TabIndex = 23;
             // 
             // btnSimpan
             // 
-            btnSimpan.Location = new Point(1106, 946);
+            btnSimpan.Location = new Point(762, 386);
+            btnSimpan.Margin = new Padding(2, 2, 2, 2);
             btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(128, 39);
+            btnSimpan.Size = new Size(90, 23);
             btnSimpan.TabIndex = 25;
             btnSimpan.Text = "Simpan";
             btnSimpan.UseVisualStyleBackColor = true;
             // 
             // btnBatal
             // 
-            btnBatal.Location = new Point(879, 955);
+            btnBatal.Location = new Point(615, 386);
+            btnBatal.Margin = new Padding(2, 2, 2, 2);
             btnBatal.Name = "btnBatal";
-            btnBatal.Size = new Size(116, 39);
+            btnBatal.Size = new Size(81, 23);
             btnBatal.TabIndex = 26;
             btnBatal.Text = "Batal";
             btnBatal.UseVisualStyleBackColor = true;
@@ -186,65 +201,71 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(879, 316);
+            label3.Location = new Point(615, 190);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(134, 25);
+            label3.Size = new Size(89, 15);
             label3.TabIndex = 27;
             label3.Text = "Harga_Perbotol";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(879, 387);
+            label4.Location = new Point(615, 232);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(149, 25);
+            label4.Size = new Size(100, 15);
             label4.TabIndex = 28;
             label4.Text = "Tanggal_Produksi";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(879, 458);
+            label5.Location = new Point(615, 275);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(116, 25);
+            label5.Size = new Size(78, 15);
             label5.TabIndex = 29;
             label5.Text = "Jumlah_Botol";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(879, 523);
+            label6.Location = new Point(615, 314);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(138, 25);
+            label6.Size = new Size(92, 15);
             label6.TabIndex = 30;
             label6.Text = "Tanggal_Expired";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(879, 597);
+            label7.Location = new Point(472, 97);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(140, 25);
+            label7.Size = new Size(92, 15);
             label7.TabIndex = 31;
             label7.Text = "Gambar_produk";
             // 
             // picPreview
             // 
             picPreview.BorderStyle = BorderStyle.FixedSingle;
-            picPreview.Location = new Point(1011, 638);
+            picPreview.Location = new Point(482, 119);
+            picPreview.Margin = new Padding(2, 2, 2, 2);
             picPreview.Name = "picPreview";
-            picPreview.Size = new Size(95, 260);
+            picPreview.Size = new Size(67, 157);
             picPreview.SizeMode = PictureBoxSizeMode.Zoom;
             picPreview.TabIndex = 32;
             picPreview.TabStop = false;
             // 
             // V_TambahProduk
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Templet_Tengkulak;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1898, 1024);
+            ClientSize = new Size(1329, 614);
             Controls.Add(picPreview);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -267,6 +288,7 @@
             Controls.Add(btnStokAdmin);
             Controls.Add(btnAkun);
             DoubleBuffered = true;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "V_TambahProduk";
             Text = "V_TambahProduk";
             Load += V_TambahProduk_Load;
