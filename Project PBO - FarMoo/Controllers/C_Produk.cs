@@ -39,8 +39,11 @@ namespace Project_PBO___FarMoo.Controllers
             const string sql = @"
             SELECT produk_id, jenis_id, nama_produk, satuan_ml, harga, image AS images
             FROM produk_susu
-            WHERE lower(nama_produk) = lower(@nama) AND jenis_id = @jenis
+            WHERE lower(nama_produk) = lower(@nama)
+            AND jenis_id = @jenis
+            AND is_delete = FALSE
             LIMIT 1;";
+
             using var cmd = new NpgsqlCommand(sql, db.Connection);
             cmd.Parameters.AddWithValue("@nama", namaProduk);
             cmd.Parameters.AddWithValue("@jenis", jenisId);

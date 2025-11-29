@@ -50,12 +50,16 @@ namespace Project_PBO___FarMoo.Controllers
             using var db = new DbContext();
             db.Open();
 
-            const string sql = @"
-                SELECT s.stok_id,s.produk_id, s.tanggal_produksi, s.jumlah_botol, s.tanggal_expired, p.nama_produk, p.satuan_ml,p.harga, p.image AS images
-                FROM stok_batch s
-                JOIN produk_susu p ON p.produk_id = s.produk_id
-                ORDER BY s.stok_id DESC
-                LIMIT @batas;";
+            const string sql = @" SELECT  s.stok_id, s.produk_id, s.tanggal_produksi, s.jumlah_botol, s.tanggal_expired, 
+                    p.nama_produk, p.satuan_ml, p.harga, p.image AS images
+                    FROM stok_batch s
+                    JOIN produk_susu p ON p.produk_id = s.produk_id
+                    WHERE s.is_delete = FALSE
+                    AND p.is_delete = FALSE
+                    AND s.tanggal_expired >= CURRENT_DATE
+                    ORDER BY s.stok_id DESC
+                    LIMIT @batas;";
+
 
             using var perintah = new NpgsqlCommand(sql, db.Connection);
             perintah.Parameters.AddWithValue("@batas", batas);
@@ -103,6 +107,22 @@ namespace Project_PBO___FarMoo.Controllers
             cmd.Parameters.AddWithValue("@tanggal_expired", stok.TanggalExpired);
 
             cmd.ExecuteNonQuery();
+        }
+
+        public void SoftDeleteExpiredBatches()
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"
+        UPDATE stok_batch
+        SET is_delete = TRUE
+        WHERE is_delete = FALSE
+          AND tanggal_expired < CURRENT_DATE;";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.ExecuteNonQuery();
+
         }
     }
 }

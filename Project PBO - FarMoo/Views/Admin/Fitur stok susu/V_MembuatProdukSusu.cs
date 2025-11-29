@@ -27,6 +27,14 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
             MuatDataStok();
         }
 
+        private void V_MembuatProdukSusu_Load(object sender, EventArgs e)
+        {
+            // 1) tandai stok yang sudah expired → is_delete = true
+            _stokController.SoftDeleteExpiredBatches();
+
+            // 2) muat ulang card stok (SELECT sudah pakai WHERE is_delete = false & expired >= today)
+            MuatDataStok();
+        }
         private void MuatDataStok()
         {
             flpProduk.Controls.Clear();

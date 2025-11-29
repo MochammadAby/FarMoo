@@ -38,6 +38,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 
         private void V_PermintaanSusuTengkulak_Load(object? sender, EventArgs e)
         {
+            _stokController.SoftDeleteExpiredBatches();
             MuatProdukUntukPermintaan();
         }
 
@@ -147,7 +148,8 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                 var txtJumlah = new TextBox
                 {
                     Width = 100,
-                    Location = new Point(90, 280)
+                    Location = new Point(90, 280),
+                    Tag = s
                 };
 
                 var data = new CardData

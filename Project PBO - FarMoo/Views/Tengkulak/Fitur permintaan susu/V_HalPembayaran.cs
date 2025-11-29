@@ -1,12 +1,227 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Project_PBO___FarMoo.Models;
+using AppUser = Project_PBO___FarMoo.Models.User;
+
+using Npgsql;
+using Project_PBO___FarMoo.Database;
+using Project_PBO___FarMoo.Helper;
+using Project_PBO___FarMoo.Models;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using AppUser = Project_PBO___FarMoo.Models.User;
 
 namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 {
-    internal class V_HalPembayaran
+    public partial class V_HalPembayaran : Form
     {
+        private readonly AppUser _user;
+        private readonly List<CheckoutItem> _items;
+        private int _total;
+
+        public V_HalPembayaran(AppUser user, List<CheckoutItem> items)
+        {
+            _user = user;
+            _items = items;
+
+            InitializeComponent();
+
+            this.Load += V_HalPembayaran_Load;
+            btnBayar.Click += BtnBayar_Click;   // pastikan ada btnBayar di Designer
+        }
+
+        private void V_HalPembayaran_Load(object sender, EventArgs e)
+        {
+            flpRingkasan.Controls.Clear();  // FlowLayoutPanel tempat card ringkasan
+
+            _total = 0;
+
+            foreach (var item in _items)
+            {
+                // ===== hitung total =====
+                int subtotal = item.Subtotal;
+                _total += subtotal;
+
+                // ===== panel card =====
+                var card = new Panel
+                {
+                    Width = 400,
+                    Height = 140,
+                    BackColor = Color.FromArgb(0, 70, 150),
+                    Margin = new Padding(10)
+                };
+
+                // gambar kiri
+                var pic = new PictureBox
+                {
+                    Width = 80,
+                    Height = 110,
+                    Location = new Point(10, 15),
+                    SizeMode = PictureBoxSizeMode.Zoom
+                };
+                if (item.ImageBytes != null && item.ImageBytes.Length > 0)
+                {
+                    pic.Image = ImageHelper.BinaryToImage(item.ImageBytes);
+                }
+
+                // Nama + jenis botol (1 baris)
+                var lblNamaJenis = new Label
+                {
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                    Location = new Point(100, 10),
+                    Text = $"{item.NamaProduk} - {item.JenisBotol} {item.SatuanMl} ml"
+                };
+
+                // Harga + jumlah (1 baris)
+                var lblHargaJumlah = new Label
+                {
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 9f),
+                    Location = new Point(100, 40),
+                    Text = $"Harga: Rp {item.Harga:N0} x {item.Jumlah}"
+                };
+
+                // Subtotal
+                var lblSubtotal = new Label
+                {
+                    AutoSize = true,
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 9f, FontStyle.Bold),
+                    Location = new Point(100, 70),
+                    Text = $"Subtotal: Rp {subtotal:N0}"
+                };
+
+                card.Controls.Add(pic);
+                card.Controls.Add(lblNamaJenis);
+                card.Controls.Add(lblHargaJumlah);
+                card.Controls.Add(lblSubtotal);
+
+                flpRingkasan.Controls.Add(card);
+            }
+
+            // tampilkan total di label
+            lblTotal.Text = $"Total: Rp {_total:N0}";
+
+            // default tanggal pengambilan = besok
+            dtpTanggalPengambilan.Value = DateTime.Today.AddDays(1);
+        }
+
+        private void BtnBayar_Click(object sender, EventArgs e)
+        {
+            // validasi tanggal pengambilan
+            DateTime tglPengambilan = dtpTanggalPengambilan.Value.Date;
+            if (tglPengambilan < DateTime.Today)
+            {
+                MessageBox.Show("Tanggal pengambilan tidak boleh di masa lalu.", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // validasi jumlah bayar
+            if (!int.TryParse(txtJumlahPembayaran.Text.Trim(), out int jumlahBayar))
+            {
+                MessageBox.Show("Jumlah pembayaran harus berupa angka.", "Validasi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (jumlahBayar != _total)
+            {
+                MessageBox.Show("Jumlah pembayaran harus sama dengan total transaksi.",
+                    "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using var db = new DbContext();
+                db.Open();
+
+                using var tx = db.Connection.BeginTransaction();
+
+                // 1. INSERT ke transaksi
+                const string sqlTrans = @"
+                    INSERT INTO transaksi
+                        (user_id, tanggal_transaksi, total_harga, status_transaksi, tanggal_pengambilan)
+                    VALUES
+                        (@user_id, @tgl_trans, @total, @status, @tgl_ambil)
+                    RETURNING transaksi_id;";
+
+                int transaksiId;
+                using (var cmd = new NpgsqlCommand(sqlTrans, db.Connection, tx))
+                {
+                    cmd.Parameters.AddWithValue("@user_id", _user.UserId);
+                    cmd.Parameters.AddWithValue("@tgl_trans", DateTime.Today);
+                    cmd.Parameters.AddWithValue("@total", _total);
+                    cmd.Parameters.AddWithValue("@status", "Menunggu Konfirmasi"); // atau "Diajukan"
+                    cmd.Parameters.AddWithValue("@tgl_ambil", tglPengambilan);
+
+                    transaksiId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+                // 2. INSERT ke detail_transaksi + update stok
+                const string sqlDetail = @"
+                    INSERT INTO detail_transaksi
+                        (produk_id, transaksi_id, harga, jumlah, subtotal, is_delete)
+                    VALUES
+                        (@produk_id, @transaksi_id, @harga, @jumlah, @subtotal, FALSE);";
+
+                const string sqlUpdateStok = @"
+                    UPDATE stok_batch
+                    SET jumlah_botol = jumlah_botol - @qty
+                    WHERE stok_id = @stok_id
+                      AND is_delete = FALSE;";
+
+                foreach (var item in _items)
+                {
+                    int subtotal = item.Subtotal;
+
+                    // detail_transaksi
+                    using (var cmdDet = new NpgsqlCommand(sqlDetail, db.Connection, tx))
+                    {
+                        cmdDet.Parameters.AddWithValue("@produk_id", item.ProdukId);
+                        cmdDet.Parameters.AddWithValue("@transaksi_id", transaksiId);
+                        cmdDet.Parameters.AddWithValue("@harga", item.Harga);
+                        cmdDet.Parameters.AddWithValue("@jumlah", item.Jumlah);
+                        cmdDet.Parameters.AddWithValue("@subtotal", subtotal);
+                        cmdDet.ExecuteNonQuery();
+                    }
+
+                    // update stok_batch
+                    using (var cmdStok = new NpgsqlCommand(sqlUpdateStok, db.Connection, tx))
+                    {
+                        cmdStok.Parameters.AddWithValue("@qty", item.Jumlah);
+                        cmdStok.Parameters.AddWithValue("@stok_id", item.StokId);
+                        cmdStok.ExecuteNonQuery();
+                    }
+                }
+
+                tx.Commit();
+
+                MessageBox.Show("Pembayaran berhasil disimpan. Permintaan akan diproses peternak.",
+                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal menyimpan transaksi: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
+
