@@ -253,7 +253,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 
         private void btnAkun_Click(object sender, EventArgs e)
         {
-            NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
+            NavigationHelper.NavigateTo(this, new V_Akun(_user));
         }
 
 
