@@ -1,7 +1,7 @@
 ﻿using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
-using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan;
 using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
@@ -72,9 +72,9 @@ namespace Project_PBO___FarMoo.Views.Admin
 
         }
 
-        private void btnPermintaanAdmin_Click_1(object sender, EventArgs e)
+        private void btnLaporanPenjualan_Click(object sender, EventArgs e)
         {
-            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));
+            NavigationHelper.NavigateTo(this, new V_LaporanPenjualan());
         }
     }
 }

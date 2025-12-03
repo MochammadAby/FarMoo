@@ -4,6 +4,7 @@ using Project_PBO___FarMoo.Models;
 using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using AppUser = Project_PBO___FarMoo.Models.User;
 
@@ -61,51 +62,39 @@ namespace Project_PBO___FarMoo.Controllers
             }
         }
 
-            public List<M_PermintaanSusu> GetSemuaPermintaanSusu()
-            {
-                var hasil = new List<M_PermintaanSusu>();
+        public DataTable GetRiwayatPembelianTable(int userId)
+        {
+            using var db = new DbContext();
+            db.Open();
 
-                using var db = new DbContext();
-                db.Open();
+            const string sql = @"
+            SELECT 
+                t.transaksi_id      AS ""ID"",
+                t.tanggal_transaksi AS ""Tanggal_transaksi"",
+                t.total_harga       AS ""Total_transaksi"",
+                p.nama_produk       AS ""Nama_produk"",
+                d.""Harga""         AS ""Harga"",
+                d.jumlah            AS ""Jumlah_botol"",
+                t.status_transaksi  AS ""Status_Transaksi""
+            FROM transaksi t
+            JOIN detail_transaksi d 
+                ON d.transaksi_id = t.transaksi_id 
+               AND d.is_delete = FALSE
+            JOIN produk_susu p 
+                ON p.produk_id = d.produk_id
+            WHERE t.user_id = @uid
+            ORDER BY t.tanggal_transaksi DESC, t.transaksi_id DESC;";
 
-                const string query = @"
-                    SELECT 
-                        dt.jumlah AS jumlah_botol,
-                        p.nama_produk AS nama_produk,
-                        p.satuan_ml AS volume,
-                        dt.subtotal AS total_harga,
-                        t.tanggal_transaksi AS tanggal_pembelian,
-                        t.tanggal_pengambilan AS tanggal_permintaan,
-                        t.status_transaksi AS status_pembayaran
-                    FROM detail_transaksi dt
-                    JOIN transaksi t ON dt.transaksi_id = t.transaksi_id
-                    JOIN produk_susu p ON dt.produk_id = p.produk_id
-                    WHERE dt.is_delete = FALSE
-                    ORDER BY t.tanggal_transaksi DESC;
-                ";
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@uid", userId);
 
-                using var cmd = new NpgsqlCommand(query, db.Connection);
-                using var reader = cmd.ExecuteReader();
+            using var da = new NpgsqlDataAdapter(cmd);
+            var table = new DataTable();
+            da.Fill(table);
+            return table;
+        }
 
-                while (reader.Read())
-                {
-                    hasil.Add(new M_PermintaanSusu
-                    {
-                        JumlahBotol = reader.GetInt32(0),
-                        NamaProduk = reader.GetString(1),
-                        Volume = reader.GetInt32(2),
-                        TotalHarga = reader.GetDecimal(3),
-                        TanggalPembelian = reader.GetDateTime(4),
-                        TanggalPermintaan = reader.GetDateTime(5),
-                        StatusPembayaran = reader.GetString(6)
-                    });
-                }
-
-                return hasil;
-            }
-
-    }   
-
+    }
 }
 
 

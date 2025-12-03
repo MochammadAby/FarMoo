@@ -255,10 +255,5 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
         {
             NavigationHelper.NavigateTo(this, new V_Akun(_user));
         }
-
-        private void flpProduk_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
