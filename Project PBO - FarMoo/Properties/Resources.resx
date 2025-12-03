@@ -118,20 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Templet Permintaan susu tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Templet Permintaan susu tengkulak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Profil Peternak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Profil Peternak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Login (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Login (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Register (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Register (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Kotak Beranda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Kotak Beranda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Profil (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Login (6)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login (6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,28 +127,43 @@
   <data name="Profil (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Profil (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Profil (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Profil (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Profil (5)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Profil (5).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Beranda Peternak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Beranda Peternak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Beranda Terbaru" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Beranda Terbaru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Templet Tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Templet Tengkulak1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Template Membuat Produk Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Template Membuat Produk Admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo_sampah-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_sampah-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo_edit-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo_edit-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_sampah-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_sampah-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Register (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Register (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Beranda Peternak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beranda Peternak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profil (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Kotak Beranda" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Kotak Beranda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Login (4)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Login (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Profil Peternak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Profil Peternak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Templet Tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Templet Tengkulak1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Templet Permintaan susu tengkulak" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Templet Permintaan susu tengkulak.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Beranda Terbaru" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Beranda Terbaru.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Template Membuat Produk Admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Template Membuat Produk Admin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fitur Permintaan Susu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fitur Permintaan Susu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
