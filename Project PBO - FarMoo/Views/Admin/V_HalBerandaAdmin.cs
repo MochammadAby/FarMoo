@@ -56,5 +56,10 @@ namespace Project_PBO___FarMoo.Views.Admin
             NavigationHelper.NavigateTo(this, new V_HalBerandaAdmin(_user));
 
         }
+
+        private void btnStokAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_MembuatProdukSusu(_user));
+        }
     }
 }

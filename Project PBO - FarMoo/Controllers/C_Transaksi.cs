@@ -3,6 +3,7 @@ using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using AppUser = Project_PBO___FarMoo.Models.User;
 
@@ -58,7 +59,39 @@ namespace Project_PBO___FarMoo.Controllers
                 throw;
             }
         }
-   
+
+        public DataTable GetRiwayatPembelianTable(int userId)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"
+            SELECT 
+                t.transaksi_id      AS ""ID"",
+                t.tanggal_transaksi AS ""Tanggal_transaksi"",
+                t.total_harga       AS ""Total_transaksi"",
+                p.nama_produk       AS ""Nama_produk"",
+                d.""Harga""         AS ""Harga"",
+                d.jumlah            AS ""Jumlah_botol"",
+                t.status_transaksi  AS ""Status_Transaksi""
+            FROM transaksi t
+            JOIN detail_transaksi d 
+                ON d.transaksi_id = t.transaksi_id 
+               AND d.is_delete = FALSE
+            JOIN produk_susu p 
+                ON p.produk_id = d.produk_id
+            WHERE t.user_id = @uid
+            ORDER BY t.tanggal_transaksi DESC, t.transaksi_id DESC;";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@uid", userId);
+
+            using var da = new NpgsqlDataAdapter(cmd);
+            var table = new DataTable();
+            da.Fill(table);
+            return table;
+        }
+
     }
 }
 
