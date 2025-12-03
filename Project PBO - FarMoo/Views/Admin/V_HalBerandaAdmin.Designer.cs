@@ -83,6 +83,7 @@
             btnPermintaanAdmin.Text = "   Permintaan Susu";
             btnPermintaanAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaanAdmin.UseVisualStyleBackColor = true;
+            btnPermintaanAdmin.Click += btnPermintaanAdmin_Click_1;
             // 
             // btnLaporanPenjualan
             // 
@@ -155,6 +156,7 @@
             Name = "V_HalBerandaAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "BerandaAdmin";
+            Load += V_HalBerandaAdmin_Load;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ResumeLayout(false);

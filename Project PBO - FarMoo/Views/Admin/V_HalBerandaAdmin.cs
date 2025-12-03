@@ -1,6 +1,7 @@
 ﻿using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
 using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,25 @@ namespace Project_PBO___FarMoo.Views.Admin
         {
             NavigationHelper.NavigateTo(this, new V_HalBerandaAdmin(_user));
 
+        }
+
+        private void V_HalBerandaAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void btnStokAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_MembuatProdukSusu(_user));
+        }
+        private void BtnPermintaanAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));// tombol "Permintaan Susu" → reload data tabel
+
+        }
+
+        private void btnPermintaanAdmin_Click_1(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));
         }
     }
 }

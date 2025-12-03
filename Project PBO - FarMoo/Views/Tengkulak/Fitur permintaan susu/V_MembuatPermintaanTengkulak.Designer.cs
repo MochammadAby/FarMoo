@@ -92,6 +92,7 @@
             flpProduk.Name = "flpProduk";
             flpProduk.Size = new Size(1533, 704);
             flpProduk.TabIndex = 11;
+            flpProduk.Paint += flpProduk_Paint;
             // 
             // btnCheckout
             // 

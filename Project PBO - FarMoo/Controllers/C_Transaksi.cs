@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,13 +53,59 @@ namespace Project_PBO___FarMoo.Controllers
                 tx.Commit();
                 return transaksiId;
             }
+
             catch
             {
                 tx.Rollback();
                 throw;
             }
         }
-   
-    }
+
+            public List<M_PermintaanSusu> GetSemuaPermintaanSusu()
+            {
+                var hasil = new List<M_PermintaanSusu>();
+
+                using var db = new DbContext();
+                db.Open();
+
+                const string query = @"
+                    SELECT 
+                        dt.jumlah AS jumlah_botol,
+                        p.nama_produk AS nama_produk,
+                        p.satuan_ml AS volume,
+                        dt.subtotal AS total_harga,
+                        t.tanggal_transaksi AS tanggal_pembelian,
+                        t.tanggal_pengambilan AS tanggal_permintaan,
+                        t.status_transaksi AS status_pembayaran
+                    FROM detail_transaksi dt
+                    JOIN transaksi t ON dt.transaksi_id = t.transaksi_id
+                    JOIN produk_susu p ON dt.produk_id = p.produk_id
+                    WHERE dt.is_delete = FALSE
+                    ORDER BY t.tanggal_transaksi DESC;
+                ";
+
+                using var cmd = new NpgsqlCommand(query, db.Connection);
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    hasil.Add(new M_PermintaanSusu
+                    {
+                        JumlahBotol = reader.GetInt32(0),
+                        NamaProduk = reader.GetString(1),
+                        Volume = reader.GetInt32(2),
+                        TotalHarga = reader.GetDecimal(3),
+                        TanggalPembelian = reader.GetDateTime(4),
+                        TanggalPermintaan = reader.GetDateTime(5),
+                        StatusPembayaran = reader.GetString(6)
+                    });
+                }
+
+                return hasil;
+            }
+
+    }   
+
 }
+
 
