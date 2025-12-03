@@ -113,7 +113,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                     Font = new Font("Segoe UI", 11f, FontStyle.Bold),
                     Location = new Point(20, 190),
                     AutoSize = true,
-                    Text = $"{(s.SatuanMl ?? 0)} ml"
+                    Text = $"{(s.SatuanMl)} ml"
                 };
 
                 // tombol hapus (kotak merah)

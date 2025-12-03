@@ -64,7 +64,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                 var item = (JenisBotolItem)cmbJenisBotol.Items[i];
 
                 // kalau SatuanMl di M_StokBatch bertipe int?
-                if (_stokAwal.SatuanMl.HasValue && item.SatuanMl == _stokAwal.SatuanMl.Value)
+                if (_stokAwal != null && item.SatuanMl == _stokAwal.SatuanMl)
                 {
                     cmbJenisBotol.SelectedIndex = i;
                     break;

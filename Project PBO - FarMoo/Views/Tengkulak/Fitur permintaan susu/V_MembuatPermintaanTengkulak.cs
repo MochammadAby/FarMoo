@@ -90,7 +90,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                     Location = new Point(10, 34),
                     ForeColor = Color.White,
                     Font = new Font("Segoe UI", 9, FontStyle.Regular),
-                    Text = $"{(s.SatuanMl ?? 0)} ML"
+                    Text = $"{(s.SatuanMl)} ML"
                 };
 
                 // Gambar di tengah
@@ -178,16 +178,18 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
         {
             try
             {
-                var detailList = new List<M_DetailTransaksi>();
+                var items = new List<M_CheckoutItem>();
 
                 foreach (Panel card in flpProduk.Controls.OfType<Panel>())
                 {
                     if (card.Tag is not CardData data)
                         continue;
 
+                    // cuma yang dicentang
                     if (!data.Check.Checked)
                         continue;
 
+                    // validasi jumlah
                     if (!int.TryParse(data.TxtJumlah.Text, out int qty) || qty <= 0)
                     {
                         MessageBox.Show("Jumlah harus angka > 0 untuk produk yang dipilih.",
@@ -195,6 +197,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                         return;
                     }
 
+                    // cek stok cukup
                     if (qty > data.Stok.JumlahBotol)
                     {
                         MessageBox.Show(
@@ -204,31 +207,36 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                         return;
                     }
 
-                    int subtotal = qty * data.Stok.Harga;
-
-                    detailList.Add(new M_DetailTransaksi
+                    // bikin item checkout
+                    items.Add(new M_CheckoutItem
                     {
                         ProdukId = data.Stok.ProdukId,
+                        StokId = data.Stok.StokId,
+                        NamaProduk = data.Stok.NamaProduk ?? "",
+                        JenisBotol = $"{data.Stok.SatuanMl} ml", // atau isi nama jenis kalau punya
+                        SatuanMl = data.Stok.SatuanMl,
+                        Harga = data.Stok.Harga,
                         Jumlah = qty,
-                        Subtotal = subtotal,
-                        StokId = data.Stok.StokId
+                        ImageBytes = data.Stok.Images
                     });
                 }
 
-                if (detailList.Count == 0)
+                if (items.Count == 0)
                 {
                     MessageBox.Show("Belum ada produk yang dipilih / diisi jumlahnya.",
                         "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                int transaksiId = _transaksiController.BuatTransaksi(_user, detailList);
+                // >>> DI SINI TIDAK ADA tglTransaksi, tglAmbil, atau _transaksiController <<<
 
-                MessageBox.Show(
-                    $"Permintaan susu berhasil dibuat.\nID Transaksi: {transaksiId}",
-                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // lempar ke halaman pembayaran
+                using (var frm = new V_HalPembayaran(_user, items))
+                {
+                    frm.ShowDialog();
+                }
 
-                // refresh stok di layar setelah stok berkurang
+                // setelah bayar / batal, reload stok
                 MuatProdukUntukPermintaan();
             }
             catch (Exception ex)

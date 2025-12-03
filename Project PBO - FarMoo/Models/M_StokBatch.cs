@@ -17,7 +17,7 @@ namespace Project_PBO___FarMoo.Models
         public DateTime TanggalExpired { get; set; }
 
         public string? NamaProduk { get; set; }
-        public int? SatuanMl { get; set; }
+        public int SatuanMl { get; set; }
         public int Harga { get; set; }
         public byte[]? Images { get; set; }
     }
