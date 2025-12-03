@@ -93,6 +93,7 @@
             btnLaporanPenjualan.Text = "   Laporan Penjualan";
             btnLaporanPenjualan.TextAlign = ContentAlignment.MiddleLeft;
             btnLaporanPenjualan.UseVisualStyleBackColor = true;
+            btnLaporanPenjualan.Click += btnLaporanPenjualan_Click;
             // 
             // lblWelcome_M
             // 

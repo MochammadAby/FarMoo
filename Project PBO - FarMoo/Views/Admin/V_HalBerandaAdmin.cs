@@ -1,6 +1,7 @@
 ﻿using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan;
 using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
@@ -55,6 +56,11 @@ namespace Project_PBO___FarMoo.Views.Admin
         {
             NavigationHelper.NavigateTo(this, new V_HalBerandaAdmin(_user));
 
+        }
+
+        private void btnLaporanPenjualan_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_LaporanPenjualan());
         }
     }
 }
