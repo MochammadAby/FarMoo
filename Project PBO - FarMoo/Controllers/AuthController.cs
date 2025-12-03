@@ -144,6 +144,26 @@ namespace Project_PBO___FarMoo.Controllers
             cmd.Parameters.AddWithValue("@id", userId);
 
             cmd.ExecuteNonQuery();
+
+        }
+
+        public M_Pengguna? LoginSebagaiPengguna(string username, string password)
+        {
+            var user = Login(username, password);   // pakai method lama
+
+            if (user == null)
+                return null;
+
+            return user.Role switch
+            {
+                "peternak" => new M_Peternak(user.UserId, user.NamaLengkap,
+                                            user.Username, user.Email,
+                                            user.NomorHp, user.Foto),
+                "tengkulak" => new M_Tengkulak(user.UserId, user.NamaLengkap,
+                                             user.Username, user.Email,
+                                             user.NomorHp, user.Foto),
+                _ => null
+            };
         }
     }
 }
