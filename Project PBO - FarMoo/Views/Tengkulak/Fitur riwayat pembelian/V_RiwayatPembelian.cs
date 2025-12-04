@@ -27,9 +27,18 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
 
         private void V_RiwayatPembelian_Load(object? sender, EventArgs e)
         {
+
+            KonfigurasiGrid();
             MuatData();
         }
 
+        private void KonfigurasiGrid()
+        {
+            dgvRiwayat.ReadOnly = true;
+            dgvRiwayat.AllowUserToAddRows = false;
+            dgvRiwayat.RowHeadersVisible = false;
+            dgvRiwayat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
         private void MuatData()
         {
             if (_user == null) return;   // biar aman kalau kebuka dari designer
