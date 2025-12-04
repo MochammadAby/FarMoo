@@ -80,6 +80,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
                 combo.Items.Add("Menunggu Konfirmasi");
                 combo.Items.Add("Sudah Dibayar");
                 combo.Items.Add("Belum Dibayar");
+                combo.Items.Add("Dibatalkan");
                 combo.DataPropertyName = "Status Pembayaran";
                 combo.DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton;
                 combo.FlatStyle = FlatStyle.Popup;
