@@ -37,6 +37,7 @@
             panel4 = new Panel();
             lblPenghasilan = new Label();
             label1 = new Label();
+            btnLogOut = new Button();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -139,6 +140,17 @@
             label1.TabIndex = 0;
             label1.Text = "Total Penghasilan";
             // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = Color.Red;
+            btnLogOut.Location = new Point(22, 583);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(156, 49);
+            btnLogOut.TabIndex = 7;
+            btnLogOut.Text = "Log Out";
+            btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
+            // 
             // V_HalBerandaAdmin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -146,6 +158,7 @@
             BackgroundImage = Properties.Resources.Beranda_Peternak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnLogOut);
             Controls.Add(panel4);
             Controls.Add(lblWelcome_M);
             Controls.Add(btnLaporanPenjualan);
@@ -175,5 +188,6 @@
         private Panel panel4;
         private Label lblPenghasilan;
         private Label label1;
+        private Button btnLogOut;
     }
 }

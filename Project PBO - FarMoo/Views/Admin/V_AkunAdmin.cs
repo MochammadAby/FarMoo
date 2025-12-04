@@ -4,6 +4,7 @@ using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan;
 using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
 using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
@@ -125,5 +126,11 @@ namespace Project_PBO___FarMoo.Views.Admin
             this.Hide();
         }
 
+        private void btnLaporanPenjualan_Click(object sender, EventArgs e)
+        {
+            var profil = new V_LaporanPenjualan(currentUser);
+            profil.Show();
+            this.Hide();
+        }
     }
 }

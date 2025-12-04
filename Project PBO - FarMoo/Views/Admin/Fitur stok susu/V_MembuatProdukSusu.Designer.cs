@@ -39,33 +39,32 @@
             // 
             // btnLaporanAdmin
             // 
-            btnLaporanAdmin.Location = new Point(15, 275);
-            btnLaporanAdmin.Margin = new Padding(2);
+            btnLaporanAdmin.Location = new Point(21, 458);
             btnLaporanAdmin.Name = "btnLaporanAdmin";
-            btnLaporanAdmin.Size = new Size(209, 33);
+            btnLaporanAdmin.Size = new Size(299, 55);
             btnLaporanAdmin.TabIndex = 9;
             btnLaporanAdmin.Text = "   Laporan Penjualan";
             btnLaporanAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnLaporanAdmin.UseVisualStyleBackColor = true;
+            btnLaporanAdmin.Click += btnLaporanAdmin_Click;
             // 
             // btnPermintaanAdmin
             // 
-            btnPermintaanAdmin.Location = new Point(15, 233);
-            btnPermintaanAdmin.Margin = new Padding(2);
+            btnPermintaanAdmin.Location = new Point(21, 388);
             btnPermintaanAdmin.Name = "btnPermintaanAdmin";
-            btnPermintaanAdmin.Size = new Size(209, 33);
+            btnPermintaanAdmin.Size = new Size(299, 55);
             btnPermintaanAdmin.TabIndex = 8;
             btnPermintaanAdmin.Text = "   Permintaan Susu";
             btnPermintaanAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaanAdmin.UseVisualStyleBackColor = true;
+            btnPermintaanAdmin.Click += btnPermintaanAdmin_Click;
             // 
             // btnStokAdmin
             // 
             btnStokAdmin.BackColor = Color.CornflowerBlue;
-            btnStokAdmin.Location = new Point(15, 190);
-            btnStokAdmin.Margin = new Padding(2);
+            btnStokAdmin.Location = new Point(21, 317);
             btnStokAdmin.Name = "btnStokAdmin";
-            btnStokAdmin.Size = new Size(209, 33);
+            btnStokAdmin.Size = new Size(299, 55);
             btnStokAdmin.TabIndex = 7;
             btnStokAdmin.Text = "   Produk";
             btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -74,10 +73,9 @@
             // 
             // btnAkun
             // 
-            btnAkun.Location = new Point(15, 148);
-            btnAkun.Margin = new Padding(2);
+            btnAkun.Location = new Point(21, 247);
             btnAkun.Name = "btnAkun";
-            btnAkun.Size = new Size(209, 33);
+            btnAkun.Size = new Size(299, 55);
             btnAkun.TabIndex = 6;
             btnAkun.Text = "   Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
@@ -86,10 +84,9 @@
             // 
             // btnHalAdmin
             // 
-            btnHalAdmin.Location = new Point(15, 103);
-            btnHalAdmin.Margin = new Padding(2);
+            btnHalAdmin.Location = new Point(21, 172);
             btnHalAdmin.Name = "btnHalAdmin";
-            btnHalAdmin.Size = new Size(209, 33);
+            btnHalAdmin.Size = new Size(299, 55);
             btnHalAdmin.TabIndex = 10;
             btnHalAdmin.Text = "   Halaman Beranda";
             btnHalAdmin.TextAlign = ContentAlignment.MiddleLeft;
@@ -100,10 +97,9 @@
             // 
             btnTambahProduk.BackColor = Color.White;
             btnTambahProduk.ForeColor = Color.Black;
-            btnTambahProduk.Location = new Point(1149, 44);
-            btnTambahProduk.Margin = new Padding(2);
+            btnTambahProduk.Location = new Point(1641, 73);
             btnTambahProduk.Name = "btnTambahProduk";
-            btnTambahProduk.Size = new Size(168, 34);
+            btnTambahProduk.Size = new Size(240, 57);
             btnTambahProduk.TabIndex = 11;
             btnTambahProduk.Text = "Tambah";
             btnTambahProduk.UseVisualStyleBackColor = false;
@@ -112,19 +108,18 @@
             // flpProduk
             // 
             flpProduk.AutoScroll = true;
-            flpProduk.Location = new Point(248, 95);
-            flpProduk.Margin = new Padding(2);
+            flpProduk.Location = new Point(354, 158);
             flpProduk.Name = "flpProduk";
-            flpProduk.Size = new Size(1072, 499);
+            flpProduk.Size = new Size(1531, 832);
             flpProduk.TabIndex = 12;
             // 
             // V_MembuatProdukSusu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Template_Membuat_Produk_Admin;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1329, 614);
+            ClientSize = new Size(1899, 1023);
             Controls.Add(flpProduk);
             Controls.Add(btnTambahProduk);
             Controls.Add(btnHalAdmin);
@@ -133,7 +128,6 @@
             Controls.Add(btnStokAdmin);
             Controls.Add(btnAkun);
             DoubleBuffered = true;
-            Margin = new Padding(2);
             Name = "V_MembuatProdukSusu";
             Text = "V_MembuatProdukSusu";
             ResumeLayout(false);

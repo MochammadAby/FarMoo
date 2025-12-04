@@ -53,6 +53,7 @@
             btnLaporanPenjualan.Text = "   Laporan Penjualan";
             btnLaporanPenjualan.TextAlign = ContentAlignment.MiddleLeft;
             btnLaporanPenjualan.UseVisualStyleBackColor = true;
+            btnLaporanPenjualan.Click += btnLaporanPenjualan_Click;
             // 
             // btnPermintaanSusu
             // 
@@ -63,6 +64,7 @@
             btnPermintaanSusu.Text = "   Permintaan Susu";
             btnPermintaanSusu.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaanSusu.UseVisualStyleBackColor = true;
+            btnPermintaanSusu.Click += btnPermintaanSusu_Click;
             // 
             // btnStokSusu
             // 

@@ -137,7 +137,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
 
         private void BtnPermintaanAdmin_Click(object sender, EventArgs e)
         {
-            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));// tombol "Permintaan Susu" → reload data tabel
+            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));
             
         }
 

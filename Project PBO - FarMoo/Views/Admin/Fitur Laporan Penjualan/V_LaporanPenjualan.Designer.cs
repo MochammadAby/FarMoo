@@ -30,7 +30,7 @@
         {
             btnLaporanPenjualan = new Button();
             btnPermintaanAdmin = new Button();
-            btnStokAdmin = new Button();
+            btnProduk = new Button();
             btnAkunAdmin = new Button();
             btnHalamanAdmin = new Button();
             dataGridView1 = new DataGridView();
@@ -57,16 +57,18 @@
             btnPermintaanAdmin.Text = "   Permintaan Susu";
             btnPermintaanAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaanAdmin.UseVisualStyleBackColor = true;
+            btnPermintaanAdmin.Click += btnPermintaanAdmin_Click;
             // 
-            // btnStokAdmin
+            // btnProduk
             // 
-            btnStokAdmin.Location = new Point(22, 317);
-            btnStokAdmin.Name = "btnStokAdmin";
-            btnStokAdmin.Size = new Size(298, 55);
-            btnStokAdmin.TabIndex = 7;
-            btnStokAdmin.Text = "   Produk";
-            btnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
-            btnStokAdmin.UseVisualStyleBackColor = true;
+            btnProduk.Location = new Point(22, 317);
+            btnProduk.Name = "btnProduk";
+            btnProduk.Size = new Size(298, 55);
+            btnProduk.TabIndex = 7;
+            btnProduk.Text = "   Produk";
+            btnProduk.TextAlign = ContentAlignment.MiddleLeft;
+            btnProduk.UseVisualStyleBackColor = true;
+            btnProduk.Click += btnProduk_Click;
             // 
             // btnAkunAdmin
             // 
@@ -77,6 +79,7 @@
             btnAkunAdmin.Text = "   Akun";
             btnAkunAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnAkunAdmin.UseVisualStyleBackColor = true;
+            btnAkunAdmin.Click += btnAkunAdmin_Click;
             // 
             // btnHalamanAdmin
             // 
@@ -88,9 +91,11 @@
             btnHalamanAdmin.Text = "   Halaman Beranda";
             btnHalamanAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnHalamanAdmin.UseVisualStyleBackColor = false;
+            btnHalamanAdmin.Click += btnHalamanAdmin_Click;
             // 
             // dataGridView1
             // 
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(380, 175);
             dataGridView1.Name = "dataGridView1";
@@ -108,9 +113,10 @@
             Controls.Add(dataGridView1);
             Controls.Add(btnLaporanPenjualan);
             Controls.Add(btnPermintaanAdmin);
-            Controls.Add(btnStokAdmin);
+            Controls.Add(btnProduk);
             Controls.Add(btnAkunAdmin);
             Controls.Add(btnHalamanAdmin);
+            DoubleBuffered = true;
             Name = "V_LaporanPenjualan";
             Text = "V_LaporanPenjualan";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -121,7 +127,7 @@
 
         private Button btnLaporanPenjualan;
         private Button btnPermintaanAdmin;
-        private Button btnStokAdmin;
+        private Button btnProduk;
         private Button btnAkunAdmin;
         private Button btnHalamanAdmin;
         private DataGridView dataGridView1;

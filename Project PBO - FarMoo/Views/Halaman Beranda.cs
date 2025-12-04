@@ -60,5 +60,10 @@ namespace Project_PBO___FarMoo.Views
         {
             NavigationHelper.NavigateTo(this, new V_RiwayatPembelian(currentUser));
         }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new Login());
+        }
     }
 }

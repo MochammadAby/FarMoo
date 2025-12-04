@@ -36,6 +36,7 @@
             btnPermintaan = new Button();
             btnRiwayat = new Button();
             button3 = new Button();
+            btnLogOut = new Button();
             panel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -131,6 +132,17 @@
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = false;
             // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = Color.Red;
+            btnLogOut.Location = new Point(12, 505);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(156, 49);
+            btnLogOut.TabIndex = 8;
+            btnLogOut.Text = "Log Out";
+            btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
+            // 
             // Halaman_Beranda
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -138,6 +150,7 @@
             BackgroundImage = Properties.Resources.Beranda_Terbaru;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnLogOut);
             Controls.Add(button3);
             Controls.Add(btnRiwayat);
             Controls.Add(btnPermintaan);
@@ -163,5 +176,6 @@
         private Button btnPermintaan;
         private Button btnRiwayat;
         private Button button3;
+        private Button btnLogOut;
     }
 }
