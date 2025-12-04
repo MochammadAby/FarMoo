@@ -2,6 +2,9 @@
 using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -174,6 +177,10 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
             }
         }
 
+        private void flpProduk_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         private void btnCheckout_Click(object? sender, EventArgs e)
         {
             try
@@ -254,6 +261,11 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
         private void btnAkun_Click(object sender, EventArgs e)
         {
             NavigationHelper.NavigateTo(this, new V_Akun(_user));
+        }
+
+        private void btnRiwayat_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_RiwayatPembelian());
         }
     }
 }

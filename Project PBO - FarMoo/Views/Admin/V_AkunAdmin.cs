@@ -107,5 +107,7 @@ namespace Project_PBO___FarMoo.Views.Admin
                 currentUser.Foto = ImageHelper.ImageToBinary(img);
             }
         }
+
+
     }
 }

@@ -83,7 +83,7 @@
             btnPermintaanAdmin.Text = "   Permintaan Susu";
             btnPermintaanAdmin.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaanAdmin.UseVisualStyleBackColor = true;
-            btnPermintaanAdmin.Click += btnPermintaanAdmin_Click_1;
+            btnPermintaanAdmin.Click += BtnPermintaanAdmin_Click;
             // 
             // btnLaporanPenjualan
             // 
