@@ -109,6 +109,16 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                     Text = $"Tanggal Expired : {s.TanggalExpired:dd/MM/yyyy}"
                 };
 
+                var lblHarga = new Label
+                {
+                    ForeColor = Color.White,
+                    Font = new Font("Segoe UI", 9f, FontStyle.Bold),
+                    Location = new Point(textLeft, 130),   // atur posisi biar rapi di bawah tanggal
+                    AutoSize = false,
+                    Size = new Size(textWidth, 20),
+                    Text = $"Harga : Rp {s.Harga:N0}"
+                };
+
                 var lblMl = new Label
                 {
                     ForeColor = Color.White,
@@ -153,6 +163,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
                 card.Controls.Add(lblJumlah);
                 card.Controls.Add(lblTglProd);
                 card.Controls.Add(lblTglExp);
+                card.Controls.Add(lblHarga);
                 card.Controls.Add(lblMl);
                 card.Controls.Add(btnHapusProduk);
                 card.Controls.Add(btnEditProduk);
