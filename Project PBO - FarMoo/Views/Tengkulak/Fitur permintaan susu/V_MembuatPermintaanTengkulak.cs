@@ -265,7 +265,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 
         private void btnRiwayat_Click(object sender, EventArgs e)
         {
-            NavigationHelper.NavigateTo(this, new V_RiwayatPembelian());
+            NavigationHelper.NavigateTo(this, new V_RiwayatPembelian(_user));
         }
     }
 }
