@@ -162,9 +162,9 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                 // 2. INSERT detail + update stok
                 const string sqlDetail = @"
                 INSERT INTO detail_transaksi
-                (produk_id, transaksi_id, harga, jumlah, subtotal, is_delete)
+                (produk_id, transaksi_id, stok_id, harga, jumlah, subtotal, is_delete)
                 VALUES
-                (@produk_id, @transaksi_id, @harga, @jumlah, @subtotal, FALSE);";
+                (@produk_id, @transaksi_id, @stok_id, @harga, @jumlah, @subtotal, FALSE);";
 
                 const string sqlUpdateStok = @"
                 UPDATE stok_batch
@@ -180,6 +180,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                     {
                         cmdDet.Parameters.AddWithValue("@produk_id", item.ProdukId);
                         cmdDet.Parameters.AddWithValue("@transaksi_id", transaksiId);
+                        cmdDet.Parameters.AddWithValue("@stok_id", item.StokId);   // <<< TAMBAHAN PENTING
                         cmdDet.Parameters.AddWithValue("@harga", item.Harga);
                         cmdDet.Parameters.AddWithValue("@jumlah", item.Jumlah);
                         cmdDet.Parameters.AddWithValue("@subtotal", subtotal);

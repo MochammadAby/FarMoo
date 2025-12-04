@@ -156,6 +156,88 @@ namespace Project_PBO___FarMoo.Controllers
             int rows = cmd.ExecuteNonQuery();
             return rows > 0;   // true kalau memang ada yang ke-update
         }
+        public bool BatalkanTransaksiDenganRollback(int transaksiId, int userId)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            using var tx = db.Connection.BeginTransaction();
+
+            // 1. Pastikan transaksi milik user ini & masih bisa dibatalkan
+            const string sqlCek = @"
+                SELECT status_transaksi
+                FROM transaksi
+                WHERE transaksi_id = @id AND user_id = @uid
+                FOR UPDATE;";
+
+            string? statusSekarang;
+            using (var cmdCek = new NpgsqlCommand(sqlCek, db.Connection, tx))
+            {
+                cmdCek.Parameters.AddWithValue("@id", transaksiId);
+                cmdCek.Parameters.AddWithValue("@uid", userId);
+
+                statusSekarang = cmdCek.ExecuteScalar()?.ToString();
+            }
+
+            if (statusSekarang == null || !statusSekarang.Equals("Menunggu Konfirmasi", StringComparison.OrdinalIgnoreCase))
+            {
+                tx.Rollback();
+                return false; // tidak bisa dibatalkan
+            }
+
+            // 2. Ambil detail transaksi (stok_id + jumlah)
+            const string sqlDetail = @"
+                SELECT stok_id, jumlah
+                FROM detail_transaksi
+                WHERE transaksi_id = @id
+                  AND is_delete = FALSE;";
+
+            var daftarDetail = new List<(long stokId, int jumlah)>();
+
+            using (var cmdDet = new NpgsqlCommand(sqlDetail, db.Connection, tx))
+            {
+                cmdDet.Parameters.AddWithValue("@id", transaksiId);
+                using var reader = cmdDet.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (reader.IsDBNull(0)) continue; // stok_id null -> skip (data lama)
+
+                    long stokId = reader.GetInt64(0);
+                    int jumlah = reader.GetInt32(1);
+                    daftarDetail.Add((stokId, jumlah));
+                }
+            }
+
+            // 3. Kembalikan stok ke masing-masing batch
+            const string sqlUpdateStok = @"
+                UPDATE stok_batch
+                SET jumlah_botol = jumlah_botol + @qty
+                WHERE stok_id = @stok_id
+                  AND is_delete = FALSE;";
+
+            foreach (var d in daftarDetail)
+            {
+                using var cmdStok = new NpgsqlCommand(sqlUpdateStok, db.Connection, tx);
+                cmdStok.Parameters.AddWithValue("@qty", d.jumlah);
+                cmdStok.Parameters.AddWithValue("@stok_id", d.stokId);
+                cmdStok.ExecuteNonQuery();
+            }
+
+            // 4. Ubah status transaksi jadi Dibatalkan
+            const string sqlUpdateTrans = @"
+                UPDATE transaksi
+                SET status_transaksi = 'Dibatalkan'
+                WHERE transaksi_id = @id;";
+
+            using (var cmdUpd = new NpgsqlCommand(sqlUpdateTrans, db.Connection, tx))
+            {
+                cmdUpd.Parameters.AddWithValue("@id", transaksiId);
+                cmdUpd.ExecuteNonQuery();
+            }
+
+            tx.Commit();
+            return true;
+        }
     }
 }
 

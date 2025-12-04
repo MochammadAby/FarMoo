@@ -47,16 +47,16 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
 
             try
             {
-                bool ok = _transaksi.BatalkanTransaksi(transaksiId, _user.UserId);
+                bool ok = _transaksi.BatalkanTransaksiDenganRollback(transaksiId, _user.UserId);
                 if (!ok)
                 {
                     MessageBox.Show(
-                        "Transaksi sudah tidak bisa dibatalkan (mungkin statusnya berubah).",
+                        "Transaksi sudah tidak bisa dibatalkan (mungkin statusnya sudah diproses).",
                         "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
-                MessageBox.Show("Transaksi berhasil dibatalkan.",
+                MessageBox.Show("Transaksi berhasil dibatalkan dan stok dikembalikan.",
                     "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 MuatData(); // refresh tabel
