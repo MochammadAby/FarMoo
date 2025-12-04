@@ -1,6 +1,7 @@
 ﻿using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -60,19 +61,19 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
             }
         }
 
-        private void btnHalTengkulak_Click(object sender, EventArgs e)
-        {
-            NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
-        }
-
         private void btnAkun_Click(object sender, EventArgs e)
         {
             NavigationHelper.NavigateTo(this, new V_Akun(_user));
         }
-        
+
         private void btnBeranda_Click(object sender, EventArgs e)
         {
             NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
+        }
+
+        private void btnPermintaan_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_MembuatPermintaanTengkulak(_user));
         }
     }
 }

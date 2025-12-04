@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnHalTengkulak = new Button();
+            btnBeranda = new Button();
             btnRiwayat = new Button();
             btnPermintaan = new Button();
             btnAkun = new Button();
@@ -36,21 +36,23 @@
             ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
             SuspendLayout();
             // 
-            // btnHalTengkulak
+            // btnBeranda
             // 
-            btnHalTengkulak.BackColor = SystemColors.ButtonHighlight;
-            btnHalTengkulak.BackgroundImageLayout = ImageLayout.Center;
-            btnHalTengkulak.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHalTengkulak.Location = new Point(12, 177);
-            btnHalTengkulak.Name = "btnHalTengkulak";
-            btnHalTengkulak.Size = new Size(310, 54);
-            btnHalTengkulak.TabIndex = 14;
-            btnHalTengkulak.Text = "   Halaman Beranda";
-            btnHalTengkulak.TextAlign = ContentAlignment.MiddleLeft;
-            btnHalTengkulak.UseVisualStyleBackColor = false;
+            btnBeranda.BackColor = SystemColors.ButtonHighlight;
+            btnBeranda.BackgroundImageLayout = ImageLayout.Center;
+            btnBeranda.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnBeranda.Location = new Point(12, 177);
+            btnBeranda.Name = "btnBeranda";
+            btnBeranda.Size = new Size(310, 54);
+            btnBeranda.TabIndex = 14;
+            btnBeranda.Text = "   Halaman Beranda";
+            btnBeranda.TextAlign = ContentAlignment.MiddleLeft;
+            btnBeranda.UseVisualStyleBackColor = false;
+            btnBeranda.Click += btnBeranda_Click;
             // 
             // btnRiwayat
             // 
+            btnRiwayat.BackColor = Color.CornflowerBlue;
             btnRiwayat.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRiwayat.Location = new Point(12, 391);
             btnRiwayat.Name = "btnRiwayat";
@@ -58,7 +60,7 @@
             btnRiwayat.TabIndex = 13;
             btnRiwayat.Text = "   Riwayat pemesanan";
             btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
-            btnRiwayat.UseVisualStyleBackColor = true;
+            btnRiwayat.UseVisualStyleBackColor = false;
             // 
             // btnPermintaan
             // 
@@ -70,6 +72,7 @@
             btnPermintaan.Text = "   Permintaan susu";
             btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
             btnPermintaan.UseVisualStyleBackColor = true;
+            btnPermintaan.Click += btnPermintaan_Click;
             // 
             // btnAkun
             // 
@@ -82,6 +85,7 @@
             btnAkun.Text = "   Akun";
             btnAkun.TextAlign = ContentAlignment.MiddleLeft;
             btnAkun.UseVisualStyleBackColor = true;
+            btnAkun.Click += btnAkun_Click;
             // 
             // dgvRiwayat
             // 
@@ -100,7 +104,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
             Controls.Add(dgvRiwayat);
-            Controls.Add(btnHalTengkulak);
+            Controls.Add(btnBeranda);
             Controls.Add(btnRiwayat);
             Controls.Add(btnPermintaan);
             Controls.Add(btnAkun);
@@ -118,5 +122,6 @@
         private Button btnPermintaan;
         private Button btnAkun;
         private DataGridView dgvRiwayat;
+        private Button btnBeranda;
     }
 }

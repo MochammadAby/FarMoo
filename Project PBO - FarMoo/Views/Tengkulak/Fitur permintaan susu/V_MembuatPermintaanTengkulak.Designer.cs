@@ -60,9 +60,11 @@
             btnRiwayat.Text = "   Riwayat pemesanan";
             btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
             btnRiwayat.UseVisualStyleBackColor = true;
+            btnRiwayat.Click += btnRiwayat_Click;
             // 
             // btnPermintaan
             // 
+            btnPermintaan.BackColor = Color.CornflowerBlue;
             btnPermintaan.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPermintaan.Location = new Point(12, 319);
             btnPermintaan.Name = "btnPermintaan";
@@ -70,7 +72,7 @@
             btnPermintaan.TabIndex = 8;
             btnPermintaan.Text = "   Permintaan susu";
             btnPermintaan.TextAlign = ContentAlignment.MiddleLeft;
-            btnPermintaan.UseVisualStyleBackColor = true;
+            btnPermintaan.UseVisualStyleBackColor = false;
             // 
             // btnAkun
             // 

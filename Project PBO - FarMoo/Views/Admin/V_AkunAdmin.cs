@@ -4,6 +4,7 @@ using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
 using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
@@ -117,6 +118,12 @@ namespace Project_PBO___FarMoo.Views.Admin
             }
         }
 
+        private void btnPermintaanSusu_Click(object sender, EventArgs e)
+        {
+            var profil = new V_PermintaanSusu(currentUser);
+            profil.Show();
+            this.Hide();
+        }
 
     }
 }
