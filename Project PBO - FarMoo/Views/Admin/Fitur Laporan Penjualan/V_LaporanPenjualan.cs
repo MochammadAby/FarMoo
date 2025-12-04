@@ -32,6 +32,23 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan
         {
             var data = laporan.GetLaporanPenjualan();
             dataGridView1.DataSource = data;
+            AturStyleDGV();
+        }
+
+        private void AturStyleDGV()
+        {
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 60, 130);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+            dataGridView1.RowTemplate.Height = 32;
+            dataGridView1.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnPermintaanAdmin_Click(object sender, EventArgs e)
