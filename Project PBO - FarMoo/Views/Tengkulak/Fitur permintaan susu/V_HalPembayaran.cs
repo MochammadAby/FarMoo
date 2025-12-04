@@ -114,6 +114,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
             }
 
             // validasi jumlah bayar
+            // validasi jumlah bayar
             if (!int.TryParse(txtJumlahPembayaran.Text.Trim(), out int jumlahBayar))
             {
                 MessageBox.Show("Jumlah pembayaran harus berupa angka.", "Validasi",
@@ -121,10 +122,15 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                 return;
             }
 
-            if (jumlahBayar != _total)
+            if (jumlahBayar < _total)
             {
-                MessageBox.Show("Jumlah pembayaran harus sama dengan total transaksi.",
-                    "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    $"Uang yang dibayarkan kurang.\n" +
+                    $"Total: Rp {_total:N0}\n" +
+                    $"Dibayar: Rp {jumlahBayar:N0}",
+                    "Validasi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
                 return;
             }
 
@@ -137,11 +143,10 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 
                 // 1. INSERT ke transaksi
                 const string sqlTrans = @"
-                    INSERT INTO transaksi
-                        (user_id, tanggal_transaksi, total_harga, status_transaksi, tanggal_pengambilan)
-                    VALUES
-                        (@user_id, @tgl_trans, @total, @status, @tgl_ambil)
-                    RETURNING transaksi_id;";
+                INSERT INTO transaksi
+                (user_id, tanggal_transaksi, total_harga, status_transaksi, tanggal_pengambilan)
+                VALUES (@user_id, @tgl_trans, @total, @status, @tgl_ambil)
+                RETURNING transaksi_id;";
 
                 int transaksiId;
                 using (var cmd = new NpgsqlCommand(sqlTrans, db.Connection, tx))
@@ -149,53 +154,36 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                     cmd.Parameters.AddWithValue("@user_id", _user.UserId);
                     cmd.Parameters.AddWithValue("@tgl_trans", DateTime.Today);
                     cmd.Parameters.AddWithValue("@total", _total);
-                    cmd.Parameters.AddWithValue("@status", "Menunggu Konfirmasi"); // atau "Diajukan"
+                    cmd.Parameters.AddWithValue("@status", "Menunggu Konfirmasi");
                     cmd.Parameters.AddWithValue("@tgl_ambil", tglPengambilan);
 
                     transaksiId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
-                // 2. INSERT ke detail_transaksi + update stok
-                const string sqlDetail = @"
-                    INSERT INTO detail_transaksi
-                        (produk_id, transaksi_id, harga, jumlah, subtotal, is_delete)
-                    VALUES
-                        (@produk_id, @transaksi_id, @harga, @jumlah, @subtotal, FALSE);";
-
-                const string sqlUpdateStok = @"
-                    UPDATE stok_batch
-                    SET jumlah_botol = jumlah_botol - @qty
-                    WHERE stok_id = @stok_id
-                      AND is_delete = FALSE;";
-
-                foreach (var item in _items)
-                {
-                    int subtotal = item.Subtotal;
-
-                    // detail_transaksi
-                    using (var cmdDet = new NpgsqlCommand(sqlDetail, db.Connection, tx))
-                    {
-                        cmdDet.Parameters.AddWithValue("@produk_id", item.ProdukId);
-                        cmdDet.Parameters.AddWithValue("@transaksi_id", transaksiId);
-                        cmdDet.Parameters.AddWithValue("@harga", item.Harga);
-                        cmdDet.Parameters.AddWithValue("@jumlah", item.Jumlah);
-                        cmdDet.Parameters.AddWithValue("@subtotal", subtotal);
-                        cmdDet.ExecuteNonQuery();
-                    }
-
-                    // update stok_batch
-                    using (var cmdStok = new NpgsqlCommand(sqlUpdateStok, db.Connection, tx))
-                    {
-                        cmdStok.Parameters.AddWithValue("@qty", item.Jumlah);
-                        cmdStok.Parameters.AddWithValue("@stok_id", item.StokId);
-                        cmdStok.ExecuteNonQuery();
-                    }
-                }
+                // 2. INSERT detail + update stok (kode lo yang lama, biarin)
 
                 tx.Commit();
 
-                MessageBox.Show("Pembayaran berhasil disimpan. Permintaan akan diproses peternak.",
-                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string pesan;
+                if (jumlahBayar == _total)
+                {
+                    pesan =
+                        $"Pembayaran berhasil.\n" +
+                        $"Total: Rp {_total:N0}\n" +
+                        $"Dibayar: Rp {jumlahBayar:N0}\n" +
+                        $"Kembalian: Rp 0";
+                }
+                else // jumlahBayar > _total
+                {
+                    int kembalian = jumlahBayar - _total;
+                    pesan =
+                        $"Pembayaran berhasil.\n" +
+                        $"Total: Rp {_total:N0}\n" +
+                        $"Dibayar: Rp {jumlahBayar:N0}\n" +
+                        $"Kembalian: Rp {kembalian:N0}";
+                }
+
+                MessageBox.Show(pesan, "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
