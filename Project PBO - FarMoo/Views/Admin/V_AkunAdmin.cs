@@ -77,6 +77,15 @@ namespace Project_PBO___FarMoo.Views.Admin
             cmd.ExecuteNonQuery();
             db.Close();
 
+            currentUser.NamaLengkap = tbNamaLengkap.Text;
+            currentUser.Username = tbUsername.Text;
+            currentUser.Password = tbPassword.Text;
+            currentUser.Email = tbEmail.Text;
+            currentUser.NomorHp = tbNoTelp.Text;
+
+            if (fotoBytes != null)
+                currentUser.Foto = fotoBytes;
+
             MessageBox.Show("Profil berhasil diubah!");
         }
 
