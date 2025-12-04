@@ -25,8 +25,72 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
         {
             InitializeComponent();
             this.Load += V_RiwayatPembelian_Load;
+            btnBatalPermintaan.Click += BtnBatalPermintaan_Click;
         }
 
+        private void BatalkanTransaksi(int transaksiId, string status)
+        {
+            if (!status.Equals("Menunggu Konfirmasi", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show(
+                    "Hanya transaksi dengan status 'Menunggu Konfirmasi' yang bisa dibatalkan.",
+                    "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var konfirmasi = MessageBox.Show(
+                $"Batalkan transaksi ID {transaksiId}?",
+                "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (konfirmasi != DialogResult.Yes)
+                return;
+
+            try
+            {
+                bool ok = _transaksi.BatalkanTransaksi(transaksiId, _user.UserId);
+                if (!ok)
+                {
+                    MessageBox.Show(
+                        "Transaksi sudah tidak bisa dibatalkan (mungkin statusnya berubah).",
+                        "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                MessageBox.Show("Transaksi berhasil dibatalkan.",
+                    "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MuatData(); // refresh tabel
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal membatalkan transaksi: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BtnBatalPermintaan_Click(object? sender, EventArgs e)
+        {
+            if (dgvRiwayat.CurrentRow == null)
+            {
+                MessageBox.Show("Pilih dulu transaksi yang mau dibatalkan.",
+                    "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // ambil transaksi_id & status dari baris yang dipilih
+            var row = dgvRiwayat.CurrentRow;
+
+            if (!int.TryParse(row.Cells["ID"].Value?.ToString(), out int transaksiId))
+            {
+                MessageBox.Show("Gagal membaca ID transaksi dari tabel.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string status = row.Cells["Status_Transaksi"].Value?.ToString() ?? "";
+
+            BatalkanTransaksi(transaksiId, status);
+        }
         private void V_RiwayatPembelian_Load(object? sender, EventArgs e)
         {
 

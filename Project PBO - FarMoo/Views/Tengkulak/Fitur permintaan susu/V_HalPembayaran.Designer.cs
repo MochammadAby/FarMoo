@@ -108,6 +108,7 @@
             btnKembali.TabIndex = 7;
             btnKembali.Text = "Kembali";
             btnKembali.UseVisualStyleBackColor = true;
+            btnKembali.Click += btnKembali_Click;
             // 
             // btnBayar
             // 
@@ -117,6 +118,7 @@
             btnBayar.TabIndex = 8;
             btnBayar.Text = "Bayar";
             btnBayar.UseVisualStyleBackColor = true;
+            btnBayar.Click += BtnBayar_Click;
             // 
             // V_HalPembayaran
             // 

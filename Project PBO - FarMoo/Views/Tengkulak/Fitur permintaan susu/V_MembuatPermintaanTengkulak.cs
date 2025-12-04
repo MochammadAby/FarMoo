@@ -235,16 +235,16 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                     return;
                 }
 
-                // >>> DI SINI TIDAK ADA tglTransaksi, tglAmbil, atau _transaksiController <<<
-
-                // lempar ke halaman pembayaran
                 using (var frm = new V_HalPembayaran(_user, items))
                 {
-                    frm.ShowDialog();
-                }
+                    var result = frm.ShowDialog();
 
-                // setelah bayar / batal, reload stok
-                MuatProdukUntukPermintaan();
+                    if (result == DialogResult.OK)
+                    {
+                        // cuma reload kalau transaksi sukses
+                        MuatProdukUntukPermintaan();
+                    }
+                }
             }
             catch (Exception ex)
             {

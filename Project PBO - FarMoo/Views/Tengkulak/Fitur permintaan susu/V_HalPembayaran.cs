@@ -20,7 +20,6 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
             InitializeComponent();
 
             this.Load += V_HalPembayaran_Load;
-            btnBayar.Click += BtnBayar_Click;   // pastikan ada btnBayar di Designer
         }
 
         private void V_HalPembayaran_Load(object sender, EventArgs e)
@@ -160,9 +159,44 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
                     transaksiId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
 
-                // 2. INSERT detail + update stok (kode lo yang lama, biarin)
+                // 2. INSERT detail + update stok
+                const string sqlDetail = @"
+                INSERT INTO detail_transaksi
+                (produk_id, transaksi_id, harga, jumlah, subtotal, is_delete)
+                VALUES
+                (@produk_id, @transaksi_id, @harga, @jumlah, @subtotal, FALSE);";
+
+                const string sqlUpdateStok = @"
+                UPDATE stok_batch
+                SET jumlah_botol = jumlah_botol - @qty
+                WHERE stok_id = @stok_id
+                AND is_delete = FALSE;";
+
+                foreach (var item in _items)
+                {
+                    int subtotal = item.Subtotal; // = item.Harga * item.Jumlah
+
+                    using (var cmdDet = new NpgsqlCommand(sqlDetail, db.Connection, tx))
+                    {
+                        cmdDet.Parameters.AddWithValue("@produk_id", item.ProdukId);
+                        cmdDet.Parameters.AddWithValue("@transaksi_id", transaksiId);
+                        cmdDet.Parameters.AddWithValue("@harga", item.Harga);
+                        cmdDet.Parameters.AddWithValue("@jumlah", item.Jumlah);
+                        cmdDet.Parameters.AddWithValue("@subtotal", subtotal);
+                        cmdDet.ExecuteNonQuery();
+                    }
+
+                    using (var cmdStok = new NpgsqlCommand(sqlUpdateStok, db.Connection, tx))
+                    {
+                        cmdStok.Parameters.AddWithValue("@qty", item.Jumlah);
+                        cmdStok.Parameters.AddWithValue("@stok_id", item.StokId);
+                        cmdStok.ExecuteNonQuery();
+                    }
+                }
 
                 tx.Commit();
+
+                // ==== DI SINI TADI KOSONG, MAKANYA KAYAK GA NGAPA-NGAPAIN ====
 
                 string pesan;
                 if (jumlahBayar == _total)
@@ -190,10 +224,17 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal menyimpan transaksi: " + ex.Message,
+                MessageBox.Show("Terjadi kesalahan saat memproses pembayaran:\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
+        private void btnKembali_Click(object sender, EventArgs e) 
+        {
+            this.DialogResult = DialogResult.Cancel; // optional, default juga Cancel
+            this.Close();
+        }
+
     }
 }
 

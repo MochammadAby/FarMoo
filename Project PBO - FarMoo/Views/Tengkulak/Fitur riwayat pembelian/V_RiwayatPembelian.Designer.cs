@@ -33,6 +33,7 @@
             btnPermintaan = new Button();
             btnAkun = new Button();
             dgvRiwayat = new DataGridView();
+            btnBatalPermintaan = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
             SuspendLayout();
             // 
@@ -96,6 +97,15 @@
             dgvRiwayat.Size = new Size(1532, 843);
             dgvRiwayat.TabIndex = 15;
             // 
+            // btnBatalPermintaan
+            // 
+            btnBatalPermintaan.Location = new Point(402, 49);
+            btnBatalPermintaan.Name = "btnBatalPermintaan";
+            btnBatalPermintaan.Size = new Size(244, 76);
+            btnBatalPermintaan.TabIndex = 16;
+            btnBatalPermintaan.Text = "Batalkan Permintaan";
+            btnBatalPermintaan.UseVisualStyleBackColor = true;
+            // 
             // V_RiwayatPembelian
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -103,6 +113,7 @@
             BackgroundImage = Properties.Resources.Template_Riwayat_Pembelian_Tengkulak;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1898, 1024);
+            Controls.Add(btnBatalPermintaan);
             Controls.Add(dgvRiwayat);
             Controls.Add(btnBeranda);
             Controls.Add(btnRiwayat);
@@ -123,5 +134,6 @@
         private Button btnAkun;
         private DataGridView dgvRiwayat;
         private Button btnBeranda;
+        private Button btnBatalPermintaan;
     }
 }

@@ -45,7 +45,7 @@ namespace Project_PBO___FarMoo.Controllers
                     using var cmdDetail = new NpgsqlCommand(sqlDetail, db.Connection, tx);
                     cmdDetail.Parameters.AddWithValue("@produk_susu", item.ProdukId);
                     cmdDetail.Parameters.AddWithValue("@transaksi_id", transaksiId);
-                    cmdDetail.Parameters.AddWithValue("@harga", item.Harga);                      // <<< WAJIB
+                    cmdDetail.Parameters.AddWithValue("@harga", item.Harga);                     
                     cmdDetail.Parameters.AddWithValue("@jumlah", item.Jumlah);
                     cmdDetail.Parameters.AddWithValue("@subtotal", item.Harga * item.Jumlah);
                     cmdDetail.ExecuteNonQuery();
@@ -136,6 +136,25 @@ namespace Project_PBO___FarMoo.Controllers
             }
 
             return hasil;
+        }
+        public bool BatalkanTransaksi(int transaksiId, int userId)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"
+                UPDATE transaksi
+                SET status_transaksi = 'Dibatalkan'
+                WHERE transaksi_id = @id
+                  AND user_id = @uid
+                  AND status_transaksi = 'Menunggu Konfirmasi';";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@id", transaksiId);
+            cmd.Parameters.AddWithValue("@uid", userId);
+
+            int rows = cmd.ExecuteNonQuery();
+            return rows > 0;   // true kalau memang ada yang ke-update
         }
     }
 }
