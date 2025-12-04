@@ -44,12 +44,28 @@ namespace Project_PBO___FarMoo.Views.Admin
 
         private void btnUbahProfilAdmin_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbNamaLengkap.Text) ||
+        string.IsNullOrWhiteSpace(tbUsername.Text) ||
+        string.IsNullOrWhiteSpace(tbPassword.Text) ||
+        string.IsNullOrWhiteSpace(tbEmail.Text) ||
+        string.IsNullOrWhiteSpace(tbNoTelp.Text))
+            {
+                MessageBox.Show("Semua field wajib diisi!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!tbEmail.Text.Contains("@") || !tbEmail.Text.Contains("."))
+            {
+                MessageBox.Show("Format email tidak valid!", "Peringatan",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             byte[] fotoBytes = null;
 
             if (pbFotoPeternak.Image != null)
-            {
                 fotoBytes = ImageHelper.ImageToBinary(pbFotoPeternak.Image);
-            }
 
             using var db = new DbContext();
             db.Open();
@@ -69,12 +85,13 @@ namespace Project_PBO___FarMoo.Views.Admin
             cmd.Parameters.AddWithValue("@pass", tbPassword.Text);
             cmd.Parameters.AddWithValue("@mail", tbEmail.Text);
             cmd.Parameters.AddWithValue("@hp", tbNoTelp.Text);
-            cmd.Parameters.AddWithValue("@id", currentUser.UserId);
 
             if (fotoBytes == null)
                 cmd.Parameters.AddWithValue("@foto", DBNull.Value);
             else
                 cmd.Parameters.AddWithValue("@foto", fotoBytes);
+
+            cmd.Parameters.AddWithValue("@id", currentUser.UserId);
 
             cmd.ExecuteNonQuery();
             db.Close();
@@ -85,10 +102,8 @@ namespace Project_PBO___FarMoo.Views.Admin
             currentUser.Email = tbEmail.Text;
             currentUser.NomorHp = tbNoTelp.Text;
 
-            if (fotoBytes != null)
-                currentUser.Foto = fotoBytes;
-
-            MessageBox.Show("Profil berhasil diubah!");
+            MessageBox.Show("Profil berhasil diubah!", "Sukses",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnBerandaAdmin_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using Project_PBO___FarMoo.Controllers;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan;
 using Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu;
 using System;
 using System.Collections.Generic;
@@ -22,14 +23,6 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
 
             InitializeComponent();
 
-
-            // event tombol
-            BtnHalamanAdmin.Click += BtnHalamanAdmin_Click;
-            BtnAkunAdmin.Click += BtnAkunAdmin_Click;
-            BtnStokAdmin.Click += BtnStokAdmin_Click;
-            BtnPermintaanAdmin.Click += BtnPermintaanAdmin_Click; // tombol ini reload tabel
-            BtnLaporanPenjualan.Click += BtnLaporanPenjualan_Click;
-
             // load saat form dibuka
             this.Load += V_PermintaanSusu_Load;
 
@@ -38,7 +31,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
         private void V_PermintaanSusu_Load(object sender, EventArgs e)
         {
             MuatTabelPermintaanSusu();
-            
+
 
         }
 
@@ -138,13 +131,13 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
 
         private void BtnPermintaanAdmin_Click(object sender, EventArgs e)
         {
-            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));
-            
+
+
         }
 
         private void BtnLaporanPenjualan_Click(object sender, EventArgs e)
         {
-
+            NavigationHelper.NavigateTo(this, new V_LaporanPenjualan(_user));
         }
 
         private void dgvPermintaan_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,6 +148,11 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
         private void V_PermintaanSusu_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnStokAdmin_Click_1(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_MembuatProdukSusu(_user));
         }
     }
 }

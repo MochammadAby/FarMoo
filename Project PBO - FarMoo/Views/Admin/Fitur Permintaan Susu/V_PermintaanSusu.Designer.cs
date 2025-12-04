@@ -79,6 +79,7 @@
             BtnStokAdmin.Text = "   Produk";
             BtnStokAdmin.TextAlign = ContentAlignment.MiddleLeft;
             BtnStokAdmin.UseVisualStyleBackColor = true;
+            BtnStokAdmin.Click += BtnStokAdmin_Click_1;
             // 
             // BtnAkunAdmin
             // 
