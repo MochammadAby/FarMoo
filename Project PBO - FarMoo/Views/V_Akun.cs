@@ -5,6 +5,7 @@ using Project_PBO___FarMoo.Database;
 using Project_PBO___FarMoo.Helper;
 using Project_PBO___FarMoo.Models;
 using Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -123,6 +124,13 @@ namespace Project_PBO___FarMoo.Views
 
                 currentUser.Foto = ImageHelper.ImageToBinary(img);
             }
+        }
+
+        private void btnRiwayat_Click (object sender, EventArgs e)
+        {
+            var riwayat = new V_RiwayatPembelian(currentUser);
+            riwayat.Show();
+            this.Hide();
         }
     }
 }

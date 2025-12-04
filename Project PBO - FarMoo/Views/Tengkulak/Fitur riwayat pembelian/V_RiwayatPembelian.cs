@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Helper;
+using Project_PBO___FarMoo.Models;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using Project_PBO___FarMoo.Controllers;
-using Project_PBO___FarMoo.Models;
 using AppUser = Project_PBO___FarMoo.Models.User;
 
 namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
@@ -57,6 +58,21 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
             {
                 MessageBox.Show("Gagal memuat riwayat: " + ex.Message);
             }
+        }
+
+        private void btnHalTengkulak_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
+        }
+
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_Akun(_user));
+        }
+        
+        private void btnBeranda_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new Halaman_Beranda(_user));
         }
     }
 }
