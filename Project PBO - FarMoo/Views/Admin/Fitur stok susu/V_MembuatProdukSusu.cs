@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppUser = Project_PBO___FarMoo.Models.User;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu;
+using Project_PBO___FarMoo.Views.Admin.Fitur_Laporan_Penjualan;
 
 
 namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
@@ -236,6 +238,16 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
         private void btnStokAdmin_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPermintaanAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_PermintaanSusu(_user));
+        }
+
+        private void btnLaporanAdmin_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_LaporanPenjualan(_user));
         }
     }
 }

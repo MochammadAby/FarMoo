@@ -75,7 +75,12 @@ namespace Project_PBO___FarMoo.Views.Admin
 
         private void btnLaporanPenjualan_Click(object sender, EventArgs e)
         {
-            NavigationHelper.NavigateTo(this, new V_LaporanPenjualan());
+            NavigationHelper.NavigateTo(this, new V_LaporanPenjualan(_user));
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new Login());
         }
     }
 }
