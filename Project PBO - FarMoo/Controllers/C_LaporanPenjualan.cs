@@ -30,8 +30,7 @@ namespace Project_PBO___FarMoo.Controllers
     JOIN produk_susu p ON d.produk_id = p.produk_id
     JOIN transaksi t ON d.transaksi_id = t.transaksi_id
     JOIN akun a ON t.user_id = a.user_id
-    WHERE t.status_transaksi <> 'Dibatalkan'
-    WHERE t.status_transaksi = 'Selesai'
+    WHERE t.status_transaksi = 'Sudah Dibayar'
     ORDER BY t.transaksi_id;
 ";
 
