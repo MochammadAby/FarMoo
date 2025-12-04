@@ -1,27 +1,30 @@
-﻿using Project_PBO___FarMoo.Controllers;
-using Project_PBO___FarMoo.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Models;
 using AppUser = Project_PBO___FarMoo.Models.User;
 
 namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
 {
     public partial class V_RiwayatPembelian : Form
     {
-        private readonly C_Transaksi _transaksiController = new C_Transaksi();
         private readonly AppUser _user;
+        private readonly C_Transaksi _transaksi = new C_Transaksi();
+
+        // constructor yang dipakai waktu pindah halaman
+        public V_RiwayatPembelian(AppUser user) : this()
+        {
+            _user = user ?? throw new ArgumentNullException(nameof(user));
+        }
+
+        // constructor default untuk Designer – JANGAN dihapus
         public V_RiwayatPembelian()
         {
             InitializeComponent();
-
+            this.Load += V_RiwayatPembelian_Load;
         }
+
         private void V_RiwayatPembelian_Load(object? sender, EventArgs e)
         {
             MuatData();
@@ -29,16 +32,21 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian
 
         private void MuatData()
         {
+            if (_user == null) return;   // biar aman kalau kebuka dari designer
+
             try
             {
-                var table = _transaksiController.GetRiwayatPembelianTable(_user.UserId);
-                dgvRiwayat.AutoGenerateColumns = true; 
+                var table = _transaksi.GetRiwayatPembelianTable(_user.UserId);
+
+                dgvRiwayat.AutoGenerateColumns = true;
                 dgvRiwayat.DataSource = table;
+
+                // DEBUG: lihat dulu ada baris apa nggak
+                // MessageBox.Show($"Rows: {table.Rows.Count}");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Gagal memuat riwayat transaksi: " + ex.Message,
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Gagal memuat riwayat: " + ex.Message);
             }
         }
     }

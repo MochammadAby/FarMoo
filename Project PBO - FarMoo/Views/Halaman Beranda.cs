@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Project_PBO___FarMoo.Controllers;
+using Project_PBO___FarMoo.Helper;
+using Project_PBO___FarMoo.Models;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu;
+using Project_PBO___FarMoo.Views.Tengkulak.Fitur_riwayat_pembelian;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +12,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Project_PBO___FarMoo.Controllers;
-using Project_PBO___FarMoo.Models;
-using Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu;
 
 
 namespace Project_PBO___FarMoo.Views
@@ -42,9 +44,7 @@ namespace Project_PBO___FarMoo.Views
 
         private void btnAkun_Click(object sender, EventArgs e)
         {
-            var profil = new V_Akun(currentUser);
-            profil.Show();
-            this.Hide();
+            NavigationHelper.NavigateTo(this, new V_Akun(currentUser));
         }
         public void UpdateWelcome()
         {
@@ -53,9 +53,12 @@ namespace Project_PBO___FarMoo.Views
 
         private void btnPermintaan_Click(object sender, EventArgs e)
         {
-            var profil = new V_MembuatPermintaanTengkulak(currentUser);
-            profil.Show();
-            this.Hide();
+            NavigationHelper.NavigateTo(this, new V_MembuatPermintaanTengkulak(currentUser));
+        }
+
+        private void btnRiwayat_Click(object sender, EventArgs e)
+        {
+            NavigationHelper.NavigateTo(this, new V_RiwayatPembelian(currentUser));
         }
     }
 }

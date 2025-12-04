@@ -117,6 +117,7 @@
             btnRiwayat.Text = "   Riwayat pemesanan";
             btnRiwayat.TextAlign = ContentAlignment.MiddleLeft;
             btnRiwayat.UseVisualStyleBackColor = true;
+            btnRiwayat.Click += btnRiwayat_Click;
             // 
             // button3
             // 
