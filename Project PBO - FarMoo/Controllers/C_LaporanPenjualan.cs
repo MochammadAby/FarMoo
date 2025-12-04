@@ -18,27 +18,29 @@ namespace Project_PBO___FarMoo.Controllers
 
             string query = @"
         SELECT 
-            t.transaksi_id,
-            t.tanggal_transaksi,
-            dt.produk_id,
-            dt.harga,
-            dt.jumlah,
-            dt.subtotal,
-            t.total_harga,
-            t.status_transaksi
-        FROM detail_transaksi dt
-        JOIN transaksi t ON dt.transaksi_id = t.transaksi_id
-        WHERE t.status_transaksi = 'Selesai' 
-              AND dt.is_delete = false
-        ORDER BY t.tanggal_transaksi DESC;
-    ";
+    ROW_NUMBER() OVER (ORDER BY t.transaksi_id) AS nomor,
+    t.transaksi_id,
+    a.nama_lengkap,
+    t.tanggal_transaksi,
+    p.nama_produk,
+    d.jumlah,
+    d.subtotal,
+    t.total_harga
+FROM detail_transaksi d
+JOIN produk_susu p ON d.produk_id = p.produk_id
+JOIN transaksi t ON d.transaksi_id = t.transaksi_id
+JOIN akun a ON t.user_id = a.user_id
+WHERE t.status_transaksi = 'Selesai'
+ORDER BY t.transaksi_id;
+";
 
             using var cmd = new NpgsqlCommand(query, db.Connection);
-            using var adapter = new NpgsqlDataAdapter(cmd);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
+            using var da = new NpgsqlDataAdapter(cmd);
 
-            return table;
+            DataTable dtResult = new DataTable();
+            da.Fill(dtResult);
+
+            return dtResult;
         }
     }
 }
