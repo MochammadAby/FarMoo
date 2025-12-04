@@ -200,7 +200,7 @@ namespace Project_PBO___FarMoo.Controllers
                 using var reader = cmdDet.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (reader.IsDBNull(0)) continue; // stok_id null -> skip (data lama)
+                    if (reader.IsDBNull(0)) continue; 
 
                     long stokId = reader.GetInt64(0);
                     int jumlah = reader.GetInt32(1);
@@ -208,7 +208,7 @@ namespace Project_PBO___FarMoo.Controllers
                 }
             }
 
-            // 3. Kembalikan stok ke masing-masing batch
+           
             const string sqlUpdateStok = @"
                 UPDATE stok_batch
                 SET jumlah_botol = jumlah_botol + @qty
@@ -223,7 +223,7 @@ namespace Project_PBO___FarMoo.Controllers
                 cmdStok.ExecuteNonQuery();
             }
 
-            // 4. Ubah status transaksi jadi Dibatalkan
+         
             const string sqlUpdateTrans = @"
                 UPDATE transaksi
                 SET status_transaksi = 'Dibatalkan'
