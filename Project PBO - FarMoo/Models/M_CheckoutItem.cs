@@ -13,7 +13,7 @@ namespace Project_PBO___FarMoo.Models
             public int StokId { get; set; }
 
             public string NamaProduk { get; set; } = string.Empty;
-            public string JenisBotol { get; set; } = string.Empty; // contoh: "Original 250 ml"
+            public string JenisBotol { get; set; } = string.Empty; 
             public int SatuanMl { get; set; }
 
             public int Harga { get; set; }      // harga per botol

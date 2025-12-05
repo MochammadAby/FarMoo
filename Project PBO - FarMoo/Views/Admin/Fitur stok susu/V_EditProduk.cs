@@ -16,7 +16,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
         private readonly C_Produk _produkController = new C_Produk();
         private readonly C_Stok _stokController = new C_Stok();
 
-        // buffer gambar di RAM
+       
         private byte[] _previewImageBytes;
 
         public V_EditProduk(AppUser user, M_StokBatch stok)
@@ -26,14 +26,14 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_stok_susu
 
             InitializeComponent();
 
-            // event
+           
             btnSimpan.Click += btnSimpan_Click;
             btnBatal.Click += btnBatal_Click;
 
             picPreview.Cursor = Cursors.Hand;
             picPreview.Click += picPreview_Click;
 
-            // isi combo + isi field
+           
             LoadJenisBotol();
             IsiFormDariModel();
         }

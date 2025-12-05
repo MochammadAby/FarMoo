@@ -14,8 +14,7 @@ namespace Project_PBO___FarMoo.Models
             public int Jumlah { get; set; }
             public int Subtotal { get; set; }
 
-            // Ini cuma helper di kode (buat update stok_batch), 
-            // tidak wajib ada sebagai kolom di tabel detail_transaksi.
+          
             public int StokId { get; set; }
         }
 }

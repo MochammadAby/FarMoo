@@ -11,7 +11,7 @@ namespace Project_PBO___FarMoo.Controllers
 {
     internal class C_Stok
     {
-        // INSERT stok_batch
+        
         public int InsertStokBatch(M_StokBatch stok)
         {
             using var db = new DbContext();
@@ -55,9 +55,9 @@ namespace Project_PBO___FarMoo.Controllers
             cmd.Parameters.AddWithValue("@id", stokId);
 
             int affected = cmd.ExecuteNonQuery();
-            return affected > 0; // true kalau ada baris yang ke-update/ke-delete
+            return affected > 0; 
         }
-        // Ambil daftar stok batch terbaru
+        
         public List<M_StokBatch> GetStokBatchTerbaru(int batas = 50)
         {
             var daftarStok = new List<M_StokBatch>();
