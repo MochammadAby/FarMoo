@@ -149,7 +149,7 @@ namespace Project_PBO___FarMoo.Controllers
 
         public M_Pengguna? LoginSebagaiPengguna(string username, string password)
         {
-            var user = Login(username, password);   // pakai method lama
+            var user = Login(username, password);   
 
             if (user == null)
                 return null;
