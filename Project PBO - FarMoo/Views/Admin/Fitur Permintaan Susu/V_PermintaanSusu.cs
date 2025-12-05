@@ -26,6 +26,9 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
             // load saat form dibuka
             this.Load += V_PermintaanSusu_Load;
 
+            dgvPermintaan.CurrentCellDirtyStateChanged += dgvPermintaan_CurrentCellDirtyStateChanged;
+            dgvPermintaan.CellValueChanged += dgvPermintaan_CellValueChanged;
+
         }
 
         private void V_PermintaanSusu_Load(object sender, EventArgs e)
@@ -45,6 +48,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
                 var daftarPermintaan = _transaksiController.GetSemuaPermintaanSusu();
 
                 var tabel = new DataTable();
+                tabel.Columns.Add("TransaksiId", typeof(int));
                 tabel.Columns.Add("Jumlah Botol");
                 tabel.Columns.Add("Nama Produk");
                 tabel.Columns.Add("Volume (ml)");
@@ -56,6 +60,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
                 foreach (var p in daftarPermintaan)
                 {
                     tabel.Rows.Add(
+                        p.TransaksiId,
                         p.JumlahBotol,
                         p.NamaProduk,
                         p.Volume,
@@ -67,6 +72,7 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
                 }
 
                 dgvPermintaan.DataSource = tabel;
+                dgvPermintaan.Columns["TransaksiId"].Visible = false;
                 // Ubah kolom terakhir menjadi ComboBox
                 DataGridViewComboBoxColumn combo = new DataGridViewComboBoxColumn();
                 combo.HeaderText = "Status Pembayaran";
@@ -79,10 +85,10 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
                 combo.FlatStyle = FlatStyle.Popup;
 
                 // Hapus kolom teks lama (kolom paling akhir)
-                dgvPermintaan.Columns.RemoveAt(6);
+                dgvPermintaan.Columns.RemoveAt(7);
 
                 // Tambahkan combobox ke kolom 6
-                dgvPermintaan.Columns.Insert(6, combo);
+                dgvPermintaan.Columns.Insert(7, combo);
 
 
                 AturStyleDGV();
@@ -93,6 +99,50 @@ namespace Project_PBO___FarMoo.Views.Admin.Fitur_Permintaan_Susu
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvPermintaan_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvPermintaan.IsCurrentCellDirty)
+            {
+                dgvPermintaan.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dgvPermintaan_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var col = dgvPermintaan.Columns[e.ColumnIndex];
+            if (col.HeaderText != "Status Pembayaran") return;
+
+            var row = dgvPermintaan.Rows[e.RowIndex];
+
+            if (!int.TryParse(row.Cells["TransaksiId"].Value?.ToString(), out int transaksiId))
+            {
+                MessageBox.Show("Gagal membaca ID transaksi.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string statusBaru = row.Cells[e.ColumnIndex].Value?.ToString() ?? "Menunggu Konfirmasi";
+
+            try
+            {
+                _transaksiController.UpdateStatusTransaksi(transaksiId, statusBaru);
+
+                if (statusBaru == "Sudah Dibayar")
+                {
+                    MessageBox.Show("Status pembayaran berhasil dikonfirmasi.",
+                        "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mengupdate status transaksi: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         // Styling DGV biar rapih
         private void AturStyleDGV()

@@ -2,6 +2,7 @@
 {
     public class M_PermintaanSusu
     {
+        public int TransaksiId { get; set; }
         public int JumlahBotol { get; set; }
         public string NamaProduk { get; set; } = "";
         public int Volume { get; set; }

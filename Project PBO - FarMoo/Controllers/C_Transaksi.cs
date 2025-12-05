@@ -97,45 +97,47 @@ namespace Project_PBO___FarMoo.Controllers
 
         public List<M_PermintaanSusu> GetSemuaPermintaanSusu()
         {
-            var hasil = new List<M_PermintaanSusu>();
+            var result = new List<M_PermintaanSusu>();
 
             using var db = new DbContext();
             db.Open();
 
-            const string query = @"
-                    SELECT 
-                        dt.jumlah AS jumlah_botol,
-                        p.nama_produk AS nama_produk,
-                        p.satuan_ml AS volume,
-                        dt.subtotal AS total_harga,
-                        t.tanggal_transaksi AS tanggal_pembelian,
-                        t.tanggal_pengambilan AS tanggal_permintaan,
-                        t.status_transaksi AS status_pembayaran
-                    FROM detail_transaksi dt
-                    JOIN transaksi t ON dt.transaksi_id = t.transaksi_id
-                    JOIN produk_susu p ON dt.produk_id = p.produk_id
-                    WHERE dt.is_delete = FALSE
-                    ORDER BY t.tanggal_transaksi DESC;
-                ";
+            const string sql = @"
+        SELECT 
+            t.transaksi_id,
+            SUM(d.jumlah)          AS jumlah_botol,
+            p.nama_produk          AS nama_produk,
+            p.satuan_ml            AS volume,
+            SUM(d.subtotal)        AS total_harga,
+            t.tanggal_transaksi    AS tanggal_pembelian,
+            t.tanggal_pengambilan  AS tanggal_permintaan,
+            t.status_transaksi     AS status_pembayaran
+        FROM transaksi t
+        JOIN detail_transaksi d ON d.transaksi_id = t.transaksi_id
+        JOIN produk_susu p ON p.produk_id = d.produk_id
+        WHERE d.is_delete = FALSE
+        GROUP BY t.transaksi_id, p.nama_produk, p.satuan_ml, 
+                 t.tanggal_transaksi, t.tanggal_pengambilan, t.status_transaksi
+        ORDER BY t.tanggal_transaksi DESC;";
 
-            using var cmd = new NpgsqlCommand(query, db.Connection);
-            using var reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            using var rd = cmd.ExecuteReader();
+            while (rd.Read())
             {
-                hasil.Add(new M_PermintaanSusu
+                result.Add(new M_PermintaanSusu
                 {
-                    JumlahBotol = reader.GetInt32(0),
-                    NamaProduk = reader.GetString(1),
-                    Volume = reader.GetInt32(2),
-                    TotalHarga = reader.GetDecimal(3),
-                    TanggalPembelian = reader.GetDateTime(4),
-                    TanggalPermintaan = reader.GetDateTime(5),
-                    StatusPembayaran = reader.GetString(6)
+                    TransaksiId = rd.GetInt32(rd.GetOrdinal("transaksi_id")),
+                    JumlahBotol = rd.GetInt32(rd.GetOrdinal("jumlah_botol")),
+                    NamaProduk = rd.GetString(rd.GetOrdinal("nama_produk")),
+                    Volume = rd.GetInt32(rd.GetOrdinal("volume")),
+                    TotalHarga = rd.GetDecimal(rd.GetOrdinal("total_harga")),
+                    TanggalPembelian = rd.GetDateTime(rd.GetOrdinal("tanggal_pembelian")),
+                    TanggalPermintaan = rd.GetDateTime(rd.GetOrdinal("tanggal_permintaan")),
+                    StatusPembayaran = rd.GetString(rd.GetOrdinal("status_pembayaran"))
                 });
             }
 
-            return hasil;
+            return result;
         }
         public bool BatalkanTransaksi(int transaksiId, int userId)
         {
@@ -237,6 +239,21 @@ namespace Project_PBO___FarMoo.Controllers
 
             tx.Commit();
             return true;
+        }
+        public void UpdateStatusTransaksi(int transaksiId, string statusBaru)
+        {
+            using var db = new DbContext();
+            db.Open();
+
+            const string sql = @"
+        UPDATE transaksi
+        SET status_transaksi = @status
+        WHERE transaksi_id = @id;";
+
+            using var cmd = new NpgsqlCommand(sql, db.Connection);
+            cmd.Parameters.AddWithValue("@status", statusBaru);
+            cmd.Parameters.AddWithValue("@id", transaksiId);
+            cmd.ExecuteNonQuery();
         }
     }
 }
