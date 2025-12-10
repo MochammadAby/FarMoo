@@ -24,7 +24,7 @@ namespace Project_PBO___FarMoo.Views.Tengkulak.Fitur_permintaan_susu
 
         private void V_HalPembayaran_Load(object sender, EventArgs e)
         {
-            flpRingkasan.Controls.Clear();  // FlowLayoutPanel tempat card ringkasan
+            flpRingkasan.Controls.Clear();  
 
             _total = 0;
 
